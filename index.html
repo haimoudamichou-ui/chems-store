@@ -1,113 +1,154 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHEMS STORE</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f7f5f0;color:#182033}
-header{background:#111827;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.logo{font-size:25px;font-weight:900;direction:ltr}
-.logo span{color:#d6aa58}
-nav a{color:white;text-decoration:none;margin-right:18px}
-.hero{padding:65px 6%;background:linear-gradient(120deg,#172033,#34445d);color:white}
-.hero small{color:#e0b768;font-weight:bold}
-.hero h1{font-size:clamp(32px,5vw,54px);margin:15px 0}
-.hero p{line-height:1.9;color:#e0e5ed}
-.order{display:inline-block;margin-top:18px;padding:14px 24px;border-radius:30px;background:#d6aa58;color:#111827;text-decoration:none;font-weight:bold;direction:ltr}
-.section{padding:45px 6%}
-.heading{margin-bottom:25px}
-.heading h2{font-size:28px}
-.heading p{color:#697386}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
-.card{background:white;border:1px solid #e8e4dc;border-radius:17px;overflow:hidden;box-shadow:0 8px 24px #1720330c}
-.card img{width:100%;height:245px;object-fit:cover;display:block}
-.info{padding:17px}
-.info h3{margin:0 0 12px;font-size:19px}
-.price{font-size:21px;font-weight:800;color:#9a6b19}
-.currency{font-size:13px;font-weight:normal;color:#697386}
-.about{background:white;padding:32px 6%;line-height:1.9;color:#505b6d}
-footer{background:#111827;color:#cbd2df;text-align:center;padding:22px}
-@media(max-width:600px){
- header{padding:18px 5%}
- .hero{padding:48px 5%}
- .section{padding:35px 5%}
- .card img{height:220px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHEMS STORE</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    .products {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      padding-bottom: 20px;
+    }
+
+    .product img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product h2 {
+      font-size: 19px;
+      margin: 17px 10px 10px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 17px;
+      color: #222;
+    }
+
+    .order {
+      display: inline-block;
+      background: #111;
+      color: white;
+      text-decoration: none;
+      padding: 11px 25px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .order:hover {
+      background: #444;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 25px;
+    }
+
+    footer a {
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">CHEMS <span>STORE</span></div>
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#products">المنتجات</a>
-    <a href="#about">من نحن</a>
-  </nav>
-</header>
+  <header>
+    <h1>CHEMS STORE</h1>
+    <p>مرحبا بكم في متجرنا</p>
+  </header>
 
-<main>
-<section class="hero" id="home">
-  <small>WELCOME TO CHEMS STORE</small>
-  <h1>مرحبا بيكم في CHEMS STORE</h1>
-  <p>اكتشف منتجاتنا المختارة بعناية، هدايا مميزة ومنتجات عملية بتصميم أنيق وأسعار واضحة.</p>
-  <a class="order" href="https://www.instagram.com/chem.sstore/" target="_blank" rel="noopener">Order via Instagram</a>
-</section>
+  <main class="products">
 
-<section class="section" id="products">
-  <div class="heading">
-    <h2>منتجاتنا</h2>
-    <p>اختار المنتج اللي يعجبك</p>
-  </div>
+    <div class="product">
+      <img src="67098287-29f6-4181-8c3d-e46261d2d004.jpg"
+           alt="حاملة المفاتيح">
+      <h2>حاملة المفاتيح الخشبية</h2>
+      <p class="price">1500 دج</p>
+      <a class="order" href="https://www.instagram.com/chem.sstore/" target="_blank">اطلب الآن</a>
+    </div>
 
-  <div class="products">
+    <div class="product">
+      <img src="9af27dc2-cc53-4f0e-9e6c-afce0af1eb29.jpg"
+           alt="بورت كلي باللوغو">
+      <h2>بورت كلي مخصص باللوغو</h2>
+      <p class="price">500 دج</p>
+      <a class="order" href="https://www.instagram.com/chem.sstore/" target="_blank">اطلب الآن</a>
+    </div>
 
-    <article class="card">
-      <img src="images/savings-box.jpg" alt="حصالة تحدي خمسين مليون">
-      <div class="info">
-        <h3>حصالة تحدي 50 مليون</h3>
-        <div class="price">200,000 <span class="currency">دج</span></div>
-      </div>
-    </article>
+    <div class="product">
+      <img src="b72ff17d-d492-4a95-9eae-c68112010b7c.jpg"
+           alt="بورت كلي عادي">
+      <h2>بورت كلي خشبي</h2>
+      <p class="price">500 دج</p>
+      <a class="order" href="https://www.instagram.com/chem.sstore/" target="_blank">اطلب الآن</a>
+    </div>
 
-    <article class="card">
-      <img src="images/wall-key-holder.jpg" alt="حاملة مفاتيح خشبية">
-      <div class="info">
-        <h3>حاملة مفاتيح خشبية</h3>
-        <div class="price">150,000 <span class="currency">دج</span></div>
-      </div>
-    </article>
+    <div class="product">
+      <img src="f85238ca-2e4a-4c53-8749-4ddc3134fea4.jpg"
+           alt="حصالة تحدي 50 مليون">
+      <h2>حصالة تحدي 50 مليون</h2>
+      <p class="price">2000 دج</p>
+      <a class="order" href="https://www.instagram.com/chem.sstore/" target="_blank">اطلب الآن</a>
+    </div>
 
-    <article class="card">
-      <img src="images/keychain-round.jpg" alt="بورت كلي خشبي">
-      <div class="info">
-        <h3>بورت كلي خشبي</h3>
-        <div class="price">50,000 <span class="currency">دج</span></div>
-      </div>
-    </article>
+  </main>
 
-    <article class="card">
-      <img src="images/keychain-bulk.jpg" alt="بورت كلي خشبي مخصص">
-      <div class="info">
-        <h3>بورت كلي خشبي مخصص</h3>
-        <div class="price">50,000 <span class="currency">دج</span></div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<section class="about" id="about">
-  <h2>من نحن</h2>
-  <p>CHEMS STORE — متجر يهتم بتقديم منتجات مميزة وأفكار هدايا جميلة. شكراً على زيارتكم.</p>
-</section>
-</main>
-
-<footer>
-  © 2026 CHEMS STORE — جميع الحقوق محفوظة
-</footer>
+  <footer>
+    <p>CHEMS STORE © 2026</p>
+    <p>تابعونا على Instagram</p>
+    <a href="https://www.instagram.com/chem.sstore/" target="_blank">
+      @chem.sstore
+    </a>
+  </footer>
 
 </body>
 </html>

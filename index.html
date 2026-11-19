@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffd21f">
 <title>CHEMS STORE | شمس ستور</title>
-
 <style>
 :root {
   --yellow: #ffd21f;
@@ -22,7 +21,6 @@ body {
 }
 a { text-decoration: none; color: inherit; }
 button, input { font: inherit; }
-
 .topbar {
   background: var(--black);
   color: white;
@@ -30,7 +28,6 @@ button, input { font: inherit; }
   padding: 10px;
   font-size: 13px;
 }
-
 header {
   background: var(--yellow);
   padding: 22px 7%;
@@ -40,7 +37,6 @@ header {
   gap: 20px;
   border-bottom: 4px solid var(--black);
 }
-
 .brand { direction: ltr; text-align: right; }
 .brand h1 {
   margin: 0;
@@ -55,14 +51,12 @@ header {
   font-weight: bold;
   margin-top: 8px;
 }
-
 nav {
   display: flex;
   gap: 22px;
   font-weight: bold;
 }
 nav a:hover { text-decoration: underline; }
-
 .hero {
   background: var(--yellow);
   padding: 55px 7% 65px;
@@ -71,7 +65,6 @@ nav a:hover { text-decoration: underline; }
   align-items: center;
   gap: 30px;
 }
-
 .eyebrow {
   display: inline-block;
   background: var(--black);
@@ -81,7 +74,6 @@ nav a:hover { text-decoration: underline; }
   font-size: 13px;
   margin-bottom: 15px;
 }
-
 .hero h2 {
   font-size: clamp(34px, 5vw, 60px);
   line-height: 1.15;
@@ -105,7 +97,6 @@ nav a:hover { text-decoration: underline; }
   background: white;
   color: var(--black);
 }
-
 .hero-art {
   background: var(--black);
   color: var(--yellow);
@@ -128,7 +119,6 @@ nav a:hover { text-decoration: underline; }
   font-weight: bold;
   margin-top: 12px;
 }
-
 .section { padding: 65px 7%; }
 .section-heading { margin-bottom: 30px; }
 .section-heading h2 {
@@ -143,7 +133,6 @@ nav a:hover { text-decoration: underline; }
   background: var(--yellow);
   margin-top: 12px;
 }
-
 .products {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -183,7 +172,6 @@ nav a:hover { text-decoration: underline; }
   margin-bottom: 15px;
 }
 .price small { font-size: 13px; color: #666; }
-
 .order-button {
   border: 2px solid var(--black);
   background: var(--yellow);
@@ -197,7 +185,6 @@ nav a:hover { text-decoration: underline; }
   background: var(--black);
   color: var(--yellow);
 }
-
 .features {
   background: var(--black);
   color: white;
@@ -214,7 +201,6 @@ nav a:hover { text-decoration: underline; }
   margin-bottom: 8px;
 }
 .feature span { color: #ddd; font-size: 14px; }
-
 footer {
   background: var(--yellow);
   padding: 30px 7%;
@@ -234,7 +220,6 @@ footer strong {
   color: white;
   padding: 12px 18px;
 }
-
 /* نافذة الطلب */
 .modal {
   display: none;
@@ -304,7 +289,6 @@ footer strong {
   line-height: 1.6;
   margin-top: 12px;
 }
-
 @media(max-width:850px) {
   .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { grid-template-columns: 1fr; }
@@ -325,7 +309,6 @@ footer strong {
 }
 </style>
 </head>
-
 <body>
 
 <div class="topbar">
@@ -355,7 +338,6 @@ footer strong {
     </p>
     <a class="hero-button" href="#products">اكتشف المنتجات ←</a>
   </div>
-
   <div class="hero-art">
     <div>
       <strong>CHEMS<br>STORE.</strong>
@@ -372,7 +354,6 @@ footer strong {
   </div>
 
   <div class="products">
-
     <article class="product">
       <div class="product-image">
         <img src="67098287-29f6-4181-8c3d-e46261d2d004.jpg" alt="حاملة المفاتيح">
@@ -416,7 +397,6 @@ footer strong {
         <button class="order-button" onclick="openOrder('حصالة تحدي 50 مليون',2000)">اطلب الآن</button>
       </div>
     </article>
-
   </div>
 </section>
 
@@ -440,9 +420,9 @@ footer strong {
   <strong>CHEMS STORE</strong>
   <span>شكراً على ثقتكم ❤️</span>
   <a class="instagram-link"
-     href="https://ig.me/m/chem.sstore",
+     href="https://ig.me/m/chem.sstore"
      target="_blank" rel="noopener">
-     تابعنا على Instagram
+     راسلنا على Instagram
   </a>
 </footer>
 
@@ -451,7 +431,6 @@ footer strong {
     <button class="close" onclick="closeOrder()" aria-label="إغلاق">&times;</button>
     <h2>تأكيد الطلب</h2>
     <p>عمّر معلوماتك باش نوجدو طلبك.</p>
-
     <div class="chosen-product" id="chosenProduct"></div>
 
     <form id="orderForm">
@@ -471,12 +450,12 @@ footer strong {
       </div>
 
       <button class="submit-button" type="submit">
-        تأكيد الطلب والتواصل عبر Instagram
+        تأكيد الطلب وفتح محادثة Instagram
       </button>
     </form>
 
     <div class="note">
-      بعد التأكيد، تتنسخ رسالة طلبك. الصقها في محادثة Instagram واضغط إرسال.
+      بعد التأكيد، تتنسخ رسالة طلبك. راح تفتح محادثة متجرك على Instagram؛ الصق الرسالة واضغط إرسال.
     </div>
   </div>
 </div>
@@ -486,12 +465,15 @@ let selectedProduct = "";
 let selectedPrice = 0;
 
 const modal = document.getElementById("orderModal");
+const INSTAGRAM_DM_URL = "https://ig.me/m/chem.sstore";
 
 function openOrder(product, price) {
   selectedProduct = product;
   selectedPrice = price;
+
   document.getElementById("chosenProduct").textContent =
     product + " — " + price + " دج";
+
   modal.classList.add("show");
   document.getElementById("firstName").focus();
 }
@@ -522,24 +504,23 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
 
   const message =
 `السلام عليكم، حاب نأكد طلبي من CHEMS STORE:
-
 المنتج: ${selectedProduct}
 السعر: ${selectedPrice} دج
-
 الاسم: ${firstName}
 اللقب: ${lastName}
 رقم الهاتف: ${phone}`;
 
   try {
     await navigator.clipboard.writeText(message);
-    alert("تم نسخ رسالة الطلب! الصقها في محادثة Instagram وابعتها.");
+    alert("تم نسخ رسالة الطلب بنجاح! راح نفتحلك محادثة المتجر، الصق الرسالة واضغط إرسال.");
   } catch (error) {
-    prompt("انسخ رسالة الطلب التالية:", message);
+    window.prompt("انسخ رسالة الطلب التالية، ثم الصقها في محادثة Instagram:", message);
   }
 
-  window.open("https://www.instagram.com/chem.sstore/", "_blank");
   closeOrder();
   this.reset();
+
+  window.location.href = INSTAGRAM_DM_URL;
 });
 </script>
 

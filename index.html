@@ -1,490 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHEMS STORE | Wooden Decorations</title>
-
+<title>CHEMS STORE</title>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #fff;
-  color: #171717;
-}
-
-header {
-  background: #fff;
-  padding: 20px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-}
-
-.logo span {
-  color: #f4bd00;
-}
-
-nav a {
-  text-decoration: none;
-  color: #222;
-  margin-left: 20px;
-  font-weight: bold;
-}
-
-.cart-button {
-  background: #ffca05;
-  border: none;
-  padding: 11px 18px;
-  border-radius: 7px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.hero {
-  background: #fff8df;
-  padding: 90px 8%;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: clamp(35px, 6vw, 60px);
-  margin-bottom: 15px;
-}
-
-.hero h1 span {
-  color: #e5aa00;
-}
-
-.hero p {
-  color: #666;
-  font-size: 17px;
-  margin-bottom: 25px;
-}
-
-.shop-button {
-  display: inline-block;
-  background: #ffca05;
-  color: #111;
-  padding: 15px 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 7px;
-}
-
-.section {
-  padding: 60px 7%;
-}
-
-.section h2 {
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.subtitle {
-  text-align: center;
-  color: #777;
-  margin-bottom: 35px;
-}
-
-.categories {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 35px;
-}
-
-.category {
-  border: 1px solid #ddd;
-  background: white;
-  padding: 11px 18px;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-.category.active,
-.category:hover {
-  background: #ffca05;
-  border-color: #ffca05;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-}
-
-.product {
-  border: 1px solid #eee;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.product:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px #00000012;
-}
-
-.product img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  background: #f5f5f5;
-}
-
-.product-info {
-  padding: 18px;
-}
-
-.product-info h3 {
-  margin-bottom: 8px;
-}
-
-.product-info p {
-  color: #777;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-
-.price {
-  font-size: 20px;
-  font-weight: bold;
-  color: #c59400;
-  margin-bottom: 15px;
-}
-
-.add-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: #ffca05;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.add-button:hover {
-  background: #e9b600;
-}
-
-.cart {
-  background: #fff8df;
-  padding: 35px 7%;
-}
-
-.cart h2 {
-  margin-bottom: 20px;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #ddd;
-  gap: 10px;
-}
-
-.remove {
-  border: none;
-  background: none;
-  color: red;
-  cursor: pointer;
-}
-
-.total {
-  font-size: 22px;
-  font-weight: bold;
-  margin: 20px 0;
-}
-
-.checkout {
-  width: 100%;
-  max-width: 450px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.checkout input,
-.checkout textarea {
-  padding: 14px;
-  border: 1px solid #ddd;
-  border-radius: 7px;
-  font-size: 15px;
-}
-
-.checkout button {
-  background: #25d366;
-  color: white;
-  padding: 15px;
-  border: none;
-  border-radius: 7px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-footer {
-  text-align: center;
-  padding: 35px 15px;
-  background: #171717;
-  color: white;
-}
-
-footer span {
-  color: #ffca05;
-}
-
-@media(max-width:600px) {
-  header {
-    padding: 15px 4%;
-  }
-
-  nav a {
-    margin-left: 8px;
-    font-size: 12px;
-  }
-
-  .logo {
-    font-size: 19px;
-  }
-
-  .hero {
-    padding: 65px 5%;
-  }
-
-  .section {
-    padding: 45px 5%;
-  }
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f7f5f0;color:#182033}
+header{background:#111827;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:25px;font-weight:900;direction:ltr}
+.logo span{color:#d6aa58}
+nav a{color:white;text-decoration:none;margin-right:18px}
+.hero{padding:65px 6%;background:linear-gradient(120deg,#172033,#34445d);color:white}
+.hero small{color:#e0b768;font-weight:bold}
+.hero h1{font-size:clamp(32px,5vw,54px);margin:15px 0}
+.hero p{line-height:1.9;color:#e0e5ed}
+.order{display:inline-block;margin-top:18px;padding:14px 24px;border-radius:30px;background:#d6aa58;color:#111827;text-decoration:none;font-weight:bold;direction:ltr}
+.section{padding:45px 6%}
+.heading{margin-bottom:25px}
+.heading h2{font-size:28px}
+.heading p{color:#697386}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.card{background:white;border:1px solid #e8e4dc;border-radius:17px;overflow:hidden;box-shadow:0 8px 24px #1720330c}
+.card img{width:100%;height:245px;object-fit:cover;display:block}
+.info{padding:17px}
+.info h3{margin:0 0 12px;font-size:19px}
+.price{font-size:21px;font-weight:800;color:#9a6b19}
+.currency{font-size:13px;font-weight:normal;color:#697386}
+.about{background:white;padding:32px 6%;line-height:1.9;color:#505b6d}
+footer{background:#111827;color:#cbd2df;text-align:center;padding:22px}
+@media(max-width:600px){
+ header{padding:18px 5%}
+ .hero{padding:48px 5%}
+ .section{padding:35px 5%}
+ .card img{height:220px}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="logo">CHEMS<span> STORE.</span></div>
+  <div class="logo">CHEMS <span>STORE</span></div>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#shop">Shop</a>
-    <a href="#contact">Contact</a>
+    <a href="#home">الرئيسية</a>
+    <a href="#products">المنتجات</a>
+    <a href="#about">من نحن</a>
   </nav>
-  <button class="cart-button" onclick="document.getElementById('cart').scrollIntoView()">
-    Cart (<span id="cart-count">0</span>)
-  </button>
 </header>
 
+<main>
 <section class="hero" id="home">
-  <h1>ART FOR YOUR <span>HOME.</span></h1>
-  <p>Discover beautiful MDF creations and traditional wooden decorations.</p>
-  <a href="#shop" class="shop-button">EXPLORE COLLECTION</a>
+  <small>WELCOME TO CHEMS STORE</small>
+  <h1>مرحبا بيكم في CHEMS STORE</h1>
+  <p>اكتشف منتجاتنا المختارة بعناية، هدايا مميزة ومنتجات عملية بتصميم أنيق وأسعار واضحة.</p>
+  <a class="order" href="https://www.instagram.com/chem.sstore/" target="_blank" rel="noopener">Order via Instagram</a>
 </section>
 
-<section class="section" id="shop">
-  <h2>OUR COLLECTION</h2>
-  <p class="subtitle">Unique designs. Beautiful details. Made to decorate.</p>
-
-  <div class="categories">
-    <button class="category active" onclick="filterProducts('All',this)">All</button>
-    <button class="category" onclick="filterProducts('MDF',this)">MDF Art</button>
-    <button class="category" onclick="filterProducts('Islamic',this)">Islamic Decor</button>
-    <button class="category" onclick="filterProducts('Traditional',this)">Traditional</button>
-    <button class="category" onclick="filterProducts('Gifts',this)">Wooden Gifts</button>
+<section class="section" id="products">
+  <div class="heading">
+    <h2>منتجاتنا</h2>
+    <p>اختار المنتج اللي يعجبك</p>
   </div>
 
-  <div class="products" id="products"></div>
-</section>
+  <div class="products">
 
-<section class="cart" id="cart">
-  <h2>YOUR SHOPPING CART</h2>
-  <div id="cart-items">Your cart is empty.</div>
-  <div class="total">Total: <span id="total">0</span> DA</div>
+    <article class="card">
+      <img src="images/savings-box.jpg" alt="حصالة تحدي خمسين مليون">
+      <div class="info">
+        <h3>حصالة تحدي 50 مليون</h3>
+        <div class="price">200,000 <span class="currency">دج</span></div>
+      </div>
+    </article>
 
-  <div class="checkout">
-    <input id="customer-name" placeholder="Your full name">
-    <input id="customer-phone" placeholder="Your phone number">
-    <input id="customer-wilaya" placeholder="Your Wilaya">
-    <textarea id="customer-address" placeholder="Your delivery address"></textarea>
-    <button onclick="orderWhatsApp()">ORDER VIA WHATSAPP</button>
+    <article class="card">
+      <img src="images/wall-key-holder.jpg" alt="حاملة مفاتيح خشبية">
+      <div class="info">
+        <h3>حاملة مفاتيح خشبية</h3>
+        <div class="price">150,000 <span class="currency">دج</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/keychain-round.jpg" alt="بورت كلي خشبي">
+      <div class="info">
+        <h3>بورت كلي خشبي</h3>
+        <div class="price">50,000 <span class="currency">دج</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/keychain-bulk.jpg" alt="بورت كلي خشبي مخصص">
+      <div class="info">
+        <h3>بورت كلي خشبي مخصص</h3>
+        <div class="price">50,000 <span class="currency">دج</span></div>
+      </div>
+    </article>
+
   </div>
 </section>
 
-<footer id="contact">
-  <h2>CHEMS<span> STORE.</span></h2>
-  <p>Wooden art made to make your home special.</p>
-  <p>Follow us on Instagram: @chems.store</p>
-  <p>© 2026 CHEMS STORE. All rights reserved.</p>
+<section class="about" id="about">
+  <h2>من نحن</h2>
+  <p>CHEMS STORE — متجر يهتم بتقديم منتجات مميزة وأفكار هدايا جميلة. شكراً على زيارتكم.</p>
+</section>
+</main>
+
+<footer>
+  © 2026 CHEMS STORE — جميع الحقوق محفوظة
 </footer>
-
-<script>
-
-// EDIT YOUR PRODUCTS HERE
-
-const products = [
-  {
-    name: "MDF Wall Decoration",
-    category: "MDF",
-    price: 1500,
-    image: "https://placehold.co/500x400/fff3cf/333?text=MDF+Wall+Art",
-    description: "Elegant wooden wall decoration."
-  },
-  {
-    name: "Islamic Calligraphy",
-    category: "Islamic",
-    price: 2000,
-    image: "https://placehold.co/500x400/fff3cf/333?text=Islamic+Art",
-    description: "Beautiful Islamic decorative art."
-  },
-  {
-    name: "Traditional Wooden Art",
-    category: "Traditional",
-    price: 2500,
-    image: "https://placehold.co/500x400/fff3cf/333?text=Traditional+Art",
-    description: "Traditional inspired decoration."
-  },
-  {
-    name: "Personalized Wooden Gift",
-    category: "Gifts",
-    price: 1800,
-    image: "https://placehold.co/500x400/fff3cf/333?text=Wooden+Gift",
-    description: "A special personalized wooden gift."
-  }
-];
-
-let cart = [];
-
-function displayProducts(list) {
-  document.getElementById("products").innerHTML = list.map((p) => `
-    <div class="product">
-      <img src="${p.image}" alt="${p.name}">
-      <div class="product-info">
-        <h3>${p.name}</h3>
-        <p>${p.description}</p>
-        <div class="price">${p.price.toLocaleString()} DA</div>
-        <button class="add-button" onclick="addToCart('${p.name}')">
-          ADD TO CART +
-        </button>
-      </div>
-    </div>
-  `).join("");
-}
-
-function filterProducts(category, button) {
-  document.querySelectorAll(".category").forEach(b =>
-    b.classList.remove("active")
-  );
-  button.classList.add("active");
-
-  const filtered = category === "All"
-    ? products
-    : products.filter(p => p.category === category);
-
-  displayProducts(filtered);
-}
-
-function addToCart(name) {
-  const product = products.find(p => p.name === name);
-  const existing = cart.find(p => p.name === name);
-
-  if (existing) {
-    existing.quantity++;
-  } else {
-    cart.push({...product, quantity: 1});
-  }
-
-  updateCart();
-}
-
-function removeFromCart(name) {
-  cart = cart.filter(p => p.name !== name);
-  updateCart();
-}
-
-function updateCart() {
-  const container = document.getElementById("cart-items");
-
-  if (cart.length === 0) {
-    container.innerHTML = "Your cart is empty.";
-  } else {
-    container.innerHTML = cart.map(p => `
-      <div class="cart-item">
-        <span>${p.name} x ${p.quantity}</span>
-        <span>
-          ${(p.price * p.quantity).toLocaleString()} DA
-          <button class="remove" onclick="removeFromCart('${p.name}')">✕</button>
-        </span>
-      </div>
-    `).join("");
-  }
-
-  const count = cart.reduce((sum,p) => sum + p.quantity,0);
-  const total = cart.reduce((sum,p) => sum + p.price * p.quantity,0);
-
-  document.getElementById("cart-count").textContent = count;
-  document.getElementById("total").textContent = total.toLocaleString();
-}
-
-function orderWhatsApp() {
-
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
-
-  const name = document.getElementById("customer-name").value.trim();
-  const phone = document.getElementById("customer-phone").value.trim();
-  const wilaya = document.getElementById("customer-wilaya").value.trim();
-  const address = document.getElementById("customer-address").value.trim();
-
-  if (!name || !phone || !wilaya || !address) {
-    alert("Please complete all your information.");
-    return;
-  }
-
-  const total = cart.reduce((sum,p) => sum + p.price * p.quantity,0);
-
-  let message = "Hello CHEMS STORE! I want to place an order:\n\n";
-
-  cart.forEach(p => {
-    message += ${p.name} x ${p.quantity} = ${p.price * p.quantity} DA\n;
-  });
-
-  message += \nTotal: ${total} DA;
-  message += \nName: ${name};
-  message += \nPhone: ${phone};
-  message += \nWilaya: ${wilaya};
-  message += \nAddress: ${address};
-  message += "\nPayment: Cash on Delivery";
-
-  // REPLACE WITH YOUR WHATSAPP NUMBER
-  const whatsappNumber = "213XXXXXXXXX";
-
-  window.open(
-    "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message),
-    "_blank"
-  );
-}
-
-displayProducts(products);
-updateCart();
-
-</script>
 
 </body>
 </html>

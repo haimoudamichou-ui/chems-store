@@ -20,7 +20,7 @@ body {
   background: #fff;
 }
 a { text-decoration: none; color: inherit; }
-button, input { font: inherit; }
+button, input, textarea { font: inherit; }
 .topbar {
   background: var(--black);
   color: white;
@@ -219,7 +219,9 @@ footer strong {
   background: var(--black);
   color: white;
   padding: 12px 18px;
+  display: inline-block;
 }
+
 /* نافذة الطلب */
 .modal {
   display: none;
@@ -274,7 +276,7 @@ footer strong {
   direction: rtl;
 }
 .field input:focus { border: 2px solid var(--yellow); }
-.submit-button {
+.submit-button, .copy-button {
   width: 100%;
   padding: 14px;
   border: 0;
@@ -282,6 +284,33 @@ footer strong {
   color: var(--black);
   font-weight: 900;
   cursor: pointer;
+}
+.copy-button {
+  background: var(--black);
+  color: white;
+  margin-bottom: 12px;
+}
+.order-message {
+  width: 100%;
+  min-height: 160px;
+  padding: 12px;
+  direction: rtl;
+  text-align: right;
+  border: 1px solid #ccc;
+  resize: vertical;
+  line-height: 1.7;
+  margin: 12px 0;
+}
+.result-actions { margin-top: 15px; }
+.result-actions a {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
+}
+.instagram-action {
+  background: var(--yellow);
+  color: var(--black);
 }
 .note {
   font-size: 12px;
@@ -309,8 +338,8 @@ footer strong {
 }
 </style>
 </head>
-<body>
 
+<body>
 <div class="topbar">
   مرحبا بيكم في CHEMS STORE — منتجات مميزة بأسعار مناسبة
 </div>
@@ -419,8 +448,8 @@ footer strong {
 <footer id="contact">
   <strong>CHEMS STORE</strong>
   <span>شكراً على ثقتكم ❤️</span>
-  <a class="instagram-link"
-     href="https://ig.me/m/chem.sstore"
+  <a class="instagram-link instagram-smart-link"
+     href="https://www.instagram.com/chem.sstore/"
      target="_blank" rel="noopener">
      راسلنا على Instagram
   </a>
@@ -438,24 +467,35 @@ footer strong {
         <label for="firstName">الاسم</label>
         <input id="firstName" type="text" placeholder="أدخل الاسم" required maxlength="40">
       </div>
-
       <div class="field">
         <label for="lastName">اللقب</label>
         <input id="lastName" type="text" placeholder="أدخل اللقب" required maxlength="40">
       </div>
-
       <div class="field">
         <label for="phone">رقم الهاتف</label>
         <input id="phone" type="tel" placeholder="أدخل رقم الهاتف" required maxlength="20">
       </div>
-
-      <button class="submit-button" type="submit">
-        تأكيد الطلب وفتح محادثة Instagram
-      </button>
+      <button class="submit-button" type="submit">تأكيد الطلب</button>
     </form>
 
+    <div id="orderResult" hidden>
+      <h3>طلبك جاهز!</h3>
+      <p>انسخ الرسالة أولاً، وبعدها افتح محادثة المتجر وأرسلها.</p>
+      <textarea id="orderMessage" class="order-message" readonly></textarea>
+      <button class="copy-button" type="button" onclick="copyOrderMessage()">
+        نسخ رسالة الطلب
+      </button>
+      <div class="result-actions">
+        <a id="instagramOrderLink" class="instagram-action"
+           href="https://www.instagram.com/chem.sstore/"
+           target="_blank" rel="noopener">
+          فتح محادثة إنستغرام
+        </a>
+      </div>
+    </div>
+
     <div class="note">
-      بعد التأكيد، تتنسخ رسالة طلبك. راح تفتح محادثة متجرك على Instagram؛ الصق الرسالة واضغط إرسال.
+      بعد فتح إنستغرام، الصق رسالة الطلب في المحادثة واضغط إرسال.
     </div>
   </div>
 </div>
@@ -466,14 +506,32 @@ let selectedPrice = 0;
 
 const modal = document.getElementById("orderModal");
 const INSTAGRAM_DM_URL = "https://ig.me/m/chem.sstore";
+const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/chem.sstore/";
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
+function getInstagramUrl() {
+  return isMobileDevice() ? INSTAGRAM_DM_URL : INSTAGRAM_PROFILE_URL;
+}
+
+function updateInstagramLinks() {
+  document.querySelectorAll(".instagram-smart-link").forEach(function(link) {
+    link.href = getInstagramUrl();
+  });
+  document.getElementById("instagramOrderLink").href = getInstagramUrl();
+}
+
+updateInstagramLinks();
 
 function openOrder(product, price) {
   selectedProduct = product;
   selectedPrice = price;
-
   document.getElementById("chosenProduct").textContent =
     product + " — " + price + " دج";
-
+  document.getElementById("orderForm").hidden = false;
+  document.getElementById("orderResult").hidden = true;
   modal.classList.add("show");
   document.getElementById("firstName").focus();
 }
@@ -490,7 +548,7 @@ document.addEventListener("keydown", function(event) {
   if (event.key === "Escape") closeOrder();
 });
 
-document.getElementById("orderForm").addEventListener("submit", async function(event) {
+document.getElementById("orderForm").addEventListener("submit", function(event) {
   event.preventDefault();
 
   const firstName = document.getElementById("firstName").value.trim();
@@ -510,19 +568,34 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
 اللقب: ${lastName}
 رقم الهاتف: ${phone}`;
 
-  try {
-    await navigator.clipboard.writeText(message);
-    alert("تم نسخ رسالة الطلب بنجاح! راح نفتحلك محادثة المتجر، الصق الرسالة واضغط إرسال.");
-  } catch (error) {
-    window.prompt("انسخ رسالة الطلب التالية، ثم الصقها في محادثة Instagram:", message);
-  }
+  document.getElementById("orderMessage").value = message;
+  document.getElementById("orderForm").hidden = true;
+  document.getElementById("orderResult").hidden = false;
 
-  closeOrder();
-  this.reset();
-
-  window.location.href = INSTAGRAM_DM_URL;
+  updateInstagramLinks();
 });
-</script>
 
+async function copyOrderMessage() {
+  const field = document.getElementById("orderMessage");
+  const message = field.value;
+
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(message);
+    } else {
+      field.focus();
+      field.select();
+      const copied = document.execCommand("copy");
+      if (!copied) throw new Error("Copy failed");
+    }
+
+    alert("تم نسخ رسالة الطلب! افتح إنستغرام والصقها في المحادثة.");
+  } catch (error) {
+    field.focus();
+    field.select();
+    alert("حدد الرسالة وانسخها يدوياً، ثم افتح محادثة إنستغرام.");
+  }
+}
+</script>
 </body>
 </html>

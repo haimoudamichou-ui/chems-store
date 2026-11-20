@@ -320,15 +320,14 @@ nav a:hover { text-decoration: underline; }
   color: var(--yellow);
 }
 .order-button.is-adding {
-  transform: scale(0.95);
   background: var(--black);
   color: var(--yellow);
-  animation: addPop 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: addPop 0.36s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes addPop {
-  0% { transform: scale(0.94); }
-  55% { transform: scale(1.04); }
+  0% { transform: scale(0.93); }
+  55% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
@@ -355,17 +354,6 @@ nav a:hover { text-decoration: underline; }
   100% {
     opacity: 0;
     transform: translate(-50%, calc(-50% - 48px)) scale(1.1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .welcome-splash,
-  .splash-card,
-  .cart-nav.is-bouncing,
-  .order-button.is-adding,
-  .plus-float {
-    animation: none !important;
-    transition: none !important;
   }
 }
 
@@ -694,7 +682,7 @@ footer strong {
     <p>اختار المنتجات اللي حاب تشريها وزيدها للسلة</p>
   </div>
 
-  <div class="products">
+  <div class="products" id="productsGrid">
 
     <article class="product">
       <div class="product-image">
@@ -703,7 +691,7 @@ footer strong {
       <div class="product-info">
         <h3>حاملة المفاتيح</h3>
         <div class="price">1500 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('حاملة المفاتيح', 1500, this)">
+        <button type="button" class="order-button" data-name="حاملة المفاتيح" data-price="1500">
           أضف إلى السلة
         </button>
       </div>
@@ -716,7 +704,7 @@ footer strong {
       <div class="product-info">
         <h3>بورت كلي باللوغو</h3>
         <div class="price">500 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('بورت كلي باللوغو', 500, this)">
+        <button type="button" class="order-button" data-name="بورت كلي باللوغو" data-price="500">
           أضف إلى السلة
         </button>
       </div>
@@ -729,7 +717,7 @@ footer strong {
       <div class="product-info">
         <h3>بورت كلي عادي</h3>
         <div class="price">500 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('بورت كلي عادي', 500, this)">
+        <button type="button" class="order-button" data-name="بورت كلي عادي" data-price="500">
           أضف إلى السلة
         </button>
       </div>
@@ -742,7 +730,7 @@ footer strong {
       <div class="product-info">
         <h3>حصالة تحدي 50 مليون</h3>
         <div class="price">2000 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('حصالة تحدي 50 مليون', 2000, this)">
+        <button type="button" class="order-button" data-name="حصالة تحدي 50 مليون" data-price="2000">
           أضف إلى السلة
         </button>
       </div>
@@ -769,7 +757,7 @@ footer strong {
       <strong><span id="totalPrice">0</span> دج</strong>
     </p>
 
-    <button type="button" class="checkout-button" onclick="startCheckout()">
+    <button type="button" class="checkout-button" id="checkoutBtn">
       تأكيد الطلب
     </button>
   </div>
@@ -806,7 +794,7 @@ footer strong {
 <div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
   <div class="modal-box">
 
-    <button type="button" class="close" onclick="closeOrder()" aria-label="إغلاق">&times;</button>
+    <button type="button" class="close" id="closeModalBtn" aria-label="إغلاق">&times;</button>
 
     <h2 id="orderModalTitle">تأكيد الطلب</h2>
     <p>عمّر معلوماتك باش نوجدو طلبك.</p>
@@ -844,3 +832,43 @@ footer strong {
           <option>بشار</option>
           <option>البليدة</option>
           <option>البويرة</option>
+          <option>تمنراست</option>
+          <option>تبسة</option>
+          <option>تلمسان</option>
+          <option>تيارت</option>
+          <option>تيزي وزو</option>
+          <option>الجزائر</option>
+          <option>الجلفة</option>
+          <option>جيجل</option>
+          <option>سطيف</option>
+          <option>سعيدة</option>
+          <option>سكيكدة</option>
+          <option>سيدي بلعباس</option>
+          <option>عنابة</option>
+          <option>قالمة</option>
+          <option>قسنطينة</option>
+          <option>المدية</option>
+          <option>مستغانم</option>
+          <option>المسيلة</option>
+          <option>معسكر</option>
+          <option>ورقلة</option>
+          <option>وهران</option>
+          <option>البيض</option>
+          <option>إليزي</option>
+          <option>برج بوعريريج</option>
+          <option>بومرداس</option>
+          <option>الطارف</option>
+          <option>تندوف</option>
+          <option>تيسمسيلت</option>
+          <option>الوادي</option>
+          <option>خنشلة</option>
+          <option>سوق أهراس</option>
+          <option>تيبازة</option>
+          <option>ميلة</option>
+          <option>عين الدفلى</option>
+          <option>النعامة</option>
+          <option>عين تموشنت</option>
+          <option>غرداية</option>
+          <option>غليزان</option>
+          <option>تيميمون</option>
+          <option>برج باجي مختار

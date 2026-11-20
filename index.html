@@ -28,20 +28,25 @@ button, input, textarea, select { font: inherit; }
 .welcome-splash {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 9999;
   background: var(--yellow);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 24px;
   cursor: pointer;
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
-.welcome-splash.is-hidden {
-  transform: translateY(-100%);
+.welcome-splash.is-leaving {
   opacity: 0;
-  visibility: hidden;
+  transform: translateY(-100%);
   pointer-events: none;
+}
+.welcome-splash.is-gone {
+  display: none;
 }
 .splash-card {
   background: var(--black);
@@ -49,7 +54,7 @@ button, input, textarea, select { font: inherit; }
   padding: 36px 42px;
   border: 3px solid var(--black);
   box-shadow: 12px 12px 0 var(--white);
-  animation: splashPop 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: splashPop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .splash-tag {
   display: inline-block;
@@ -59,7 +64,6 @@ button, input, textarea, select { font: inherit; }
   font-weight: 900;
   padding: 5px 10px;
   margin-bottom: 14px;
-  letter-spacing: 0.5px;
 }
 .splash-logo {
   display: block;
@@ -601,292 +605,4 @@ footer strong {
     flex-direction: column;
   }
   nav {
-    gap: 12px;
-    font-size: 13px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .brand h1 { font-size: 25px; }
-  .brand span { font-size: 10px; }
-  .hero { padding: 42px 6%; }
-  .section { padding: 45px 5%; }
-  .products { gap: 12px; }
-  .product-info { padding: 12px; }
-  .product-info h3 { font-size: 15px; }
-  .price { font-size: 18px; }
-  .features { grid-template-columns: 1fr; }
-  .cart-section { padding: 40px 5%; }
-  .splash-card { padding: 28px 24px; }
-}
-</style>
-</head>
-
-<body>
-
-<!-- شاشة الترحيب الافتتاحية -->
-<div class="welcome-splash" id="welcomeSplash" role="dialog" aria-label="مرحباً بكم في شمس ستور">
-  <div class="splash-card">
-    <span class="splash-tag">أهلاً وسهلاً بكم</span>
-    <strong class="splash-logo">CHEMS STORE</strong>
-    <span class="splash-subtitle">مرحبا بيكم في شمس ستور ✨</span>
-    <span class="splash-hint">اضغط للدخول مباشرة</span>
-  </div>
-</div>
-
-<div class="topbar">
-  مرحبا بيكم في CHEMS STORE — منتجات مميزة بأسعار مناسبة
-</div>
-
-<header>
-  <div class="brand">
-    <h1>CHEMS STORE</h1>
-    <span>شمس ستور • اختار منتجك وخلي الباقي علينا</span>
-  </div>
-
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#products">المنتجات</a>
-    <a href="#cart" class="cart-nav" id="cartNavLink">
-      السلة <span class="cart-count" id="cartCount">0</span>
-    </a>
-    <a href="#contact">تواصل معنا</a>
-  </nav>
-</header>
-
-<main>
-
-<section class="hero" id="home">
-  <div>
-    <span class="eyebrow">WELCOME TO CHEMS STORE</span>
-    <h2>اختار اللي يعجبك،<br>واطلبه بسهولة!</h2>
-    <p>
-      اكتشف منتجاتنا، شوف التفاصيل والأسعار،
-      واجمع مشترياتك في سلة واحدة.
-    </p>
-    <a class="hero-button" href="#products">اكتشف المنتجات ←</a>
-  </div>
-
-  <div class="hero-art">
-    <div>
-      <strong>CHEMS<br>STORE.</strong>
-      <span>YOUR STYLE, YOUR CHOICE</span>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="products">
-  <div class="section-heading">
-    <h2>منتجاتنا</h2>
-    <div class="yellow-line"></div>
-    <p>اختار المنتجات اللي حاب تشريها وزيدها للسلة</p>
-  </div>
-
-  <div class="products">
-
-    <article class="product">
-      <div class="product-image">
-        <img src="./67098287-29f6-4181-8c3d-e46261d2d004.jpg" alt="حاملة المفاتيح">
-      </div>
-      <div class="product-info">
-        <h3>حاملة المفاتيح</h3>
-        <div class="price">1500 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('حاملة المفاتيح', 1500, this)">
-          أضف إلى السلة
-        </button>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image">
-        <img src="./9af27dc2-cc53-4f0e-9e6c-afce0af1eb29.jpg" alt="بورت كلي باللوغو">
-      </div>
-      <div class="product-info">
-        <h3>بورت كلي باللوغو</h3>
-        <div class="price">500 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('بورت كلي باللوغو', 500, this)">
-          أضف إلى السلة
-        </button>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image">
-        <img src="./b72ff17d-d492-4a95-9eae-c68112010b7c.jpg" alt="بورت كلي عادي">
-      </div>
-      <div class="product-info">
-        <h3>بورت كلي عادي</h3>
-        <div class="price">500 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('بورت كلي عادي', 500, this)">
-          أضف إلى السلة
-        </button>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image">
-        <img src="./f85238ca-2e4a-4c53-8749-4ddc3134fea4.jpg" alt="حصالة تحدي 50 مليون">
-      </div>
-      <div class="product-info">
-        <h3>حصالة تحدي 50 مليون</h3>
-        <div class="price">2000 <small>دج</small></div>
-        <button type="button" class="order-button" onclick="addToCart('حصالة تحدي 50 مليون', 2000, this)">
-          أضف إلى السلة
-        </button>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- سلة المشتريات -->
-<section class="cart-section" id="cart">
-  <h2>🛒 سلة المشتريات</h2>
-  <p>المنتجات اللي اخترتهم تلقاهم هنا.</p>
-
-  <div id="cartItems"></div>
-
-  <div class="cart-summary">
-    <p>
-      <span>عدد المنتجات:</span>
-      <strong id="totalQuantity">0</strong>
-    </p>
-
-    <p class="total">
-      <span>المبلغ الإجمالي:</span>
-      <strong><span id="totalPrice">0</span> دج</strong>
-    </p>
-
-    <button type="button" class="checkout-button" onclick="startCheckout()">
-      تأكيد الطلب
-    </button>
-  </div>
-</section>
-
-<section class="features">
-  <div class="feature">
-    <strong>طلب سهل</strong>
-    <span>اطلب منتجاتك في خطوات بسيطة</span>
-  </div>
-  <div class="feature">
-    <strong>أسعار واضحة</strong>
-    <span>السعر والمبلغ الإجمالي ظاهرين</span>
-  </div>
-  <div class="feature">
-    <strong>تواصل مباشر</strong>
-    <span>تأكيد الطلب عبر Instagram</span>
-  </div>
-</section>
-
-</main>
-
-<footer id="contact">
-  <strong>CHEMS STORE</strong>
-  <span>شكراً على ثقتكم ❤️</span>
-  <a class="instagram-link instagram-smart-link"
-     href="https://www.instagram.com/chem.sstore/"
-     target="_blank" rel="noopener noreferrer">
-     راسلنا على Instagram
-  </a>
-</footer>
-
-<!-- نافذة معلومات الطلب -->
-<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
-  <div class="modal-box">
-
-    <button type="button" class="close" onclick="closeOrder()" aria-label="إغلاق">&times;</button>
-
-    <h2 id="orderModalTitle">تأكيد الطلب</h2>
-    <p>عمّر معلوماتك باش نوجدو طلبك.</p>
-
-    <div class="chosen-product" id="chosenProduct"></div>
-
-    <form id="orderForm">
-
-      <div class="field">
-        <label for="firstName">الاسم</label>
-        <input id="firstName" type="text" placeholder="أدخل الاسم" required maxlength="40">
-      </div>
-
-      <div class="field">
-        <label for="lastName">اللقب</label>
-        <input id="lastName" type="text" placeholder="أدخل اللقب" required maxlength="40">
-      </div>
-
-      <div class="field">
-        <label for="phone">رقم الهاتف</label>
-        <input id="phone" type="tel" placeholder="مثال: 0550123456" required maxlength="20">
-      </div>
-
-      <div class="field">
-        <label for="wilaya">الولاية</label>
-        <select id="wilaya" required>
-          <option value="">اختر الولاية</option>
-          <option>أدرار</option>
-          <option>الشلف</option>
-          <option>الأغواط</option>
-          <option>أم البواقي</option>
-          <option>باتنة</option>
-          <option>بجاية</option>
-          <option>بسكرة</option>
-          <option>بشار</option>
-          <option>البليدة</option>
-          <option>البويرة</option>
-          <option>تمنراست</option>
-          <option>تبسة</option>
-          <option>تلمسان</option>
-          <option>تيارت</option>
-          <option>تيزي وزو</option>
-          <option>الجزائر</option>
-          <option>الجلفة</option>
-          <option>جيجل</option>
-          <option>سطيف</option>
-          <option>سعيدة</option>
-          <option>سكيكدة</option>
-          <option>سيدي بلعباس</option>
-          <option>عنابة</option>
-          <option>قالمة</option>
-          <option>قسنطينة</option>
-          <option>المدية</option>
-          <option>مستغانم</option>
-          <option>المسيلة</option>
-          <option>معسكر</option>
-          <option>ورقلة</option>
-          <option>وهران</option>
-          <option>البيض</option>
-          <option>إليزي</option>
-          <option>برج بوعريريج</option>
-          <option>بومرداس</option>
-          <option>الطارف</option>
-          <option>تندوف</option>
-          <option>تيسمسيلت</option>
-          <option>الوادي</option>
-          <option>خنشلة</option>
-          <option>سوق أهراس</option>
-          <option>تيبازة</option>
-          <option>ميلة</option>
-          <option>عين الدفلى</option>
-          <option>النعامة</option>
-          <option>عين تموشنت</option>
-          <option>غرداية</option>
-          <option>غليزان</option>
-          <option>تيميمون</option>
-          <option>برج باجي مختار</option>
-          <option>أولاد جلال</option>
-          <option>بني عباس</option>
-          <option>عين صالح</option>
-          <option>عين قزام</option>
-          <option>تقرت</option>
-          <option>جانت</option>
-          <option>المغير</option>
-          <option>المنيعة</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="district">الدائرة / المقاطعة</label>
-        <input id="district" type="text" placeholder="أدخل اسم الدائرة أو المقاطعة" required maxlength="60">
-      </div>
-
-      <div class="field">
-        <label for="address">العنوان بالتفصيل</label>
-        <input id="address" type="text
+    gap:

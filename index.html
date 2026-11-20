@@ -605,4 +605,543 @@ footer strong {
     flex-direction: column;
   }
   nav {
-    gap:
+    gap: 12px;
+    font-size: 13px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .brand h1 { font-size: 25px; }
+  .brand span { font-size: 10px; }
+  .hero { padding: 42px 6%; }
+  .section { padding: 45px 5%; }
+  .products { gap: 12px; }
+  .product-info { padding: 12px; }
+  .product-info h3 { font-size: 15px; }
+  .price { font-size: 18px; }
+  .features { grid-template-columns: 1fr; }
+  .cart-section { padding: 40px 5%; }
+  .splash-card { padding: 28px 24px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- شاشة الترحيب الافتتاحية -->
+<div class="welcome-splash" id="welcomeSplash" role="button" tabindex="0" aria-label="مرحباً بكم في شمس ستور - اضغط للدخول">
+  <div class="splash-card">
+    <span class="splash-tag">أهلاً وسهلاً بكم</span>
+    <strong class="splash-logo">CHEMS STORE</strong>
+    <span class="splash-subtitle">مرحبا بيكم في شمس ستور ✨</span>
+    <span class="splash-hint">اضغط للدخول مباشرة</span>
+  </div>
+</div>
+
+<div class="topbar">
+  مرحبا بيكم في CHEMS STORE — منتجات مميزة بأسعار مناسبة
+</div>
+
+<header>
+  <div class="brand">
+    <h1>CHEMS STORE</h1>
+    <span>شمس ستور • اختار منتجك وخلي الباقي علينا</span>
+  </div>
+
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#products">المنتجات</a>
+    <a href="#cart" class="cart-nav" id="cartNavLink">
+      السلة <span class="cart-count" id="cartCount">0</span>
+    </a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div>
+    <span class="eyebrow">WELCOME TO CHEMS STORE</span>
+    <h2>اختار اللي يعجبك،<br>واطلبه بسهولة!</h2>
+    <p>
+      اكتشف منتجاتنا، شوف التفاصيل والأسعار،
+      واجمع مشترياتك في سلة واحدة.
+    </p>
+    <a class="hero-button" href="#products">اكتشف المنتجات ←</a>
+  </div>
+
+  <div class="hero-art">
+    <div>
+      <strong>CHEMS<br>STORE.</strong>
+      <span>YOUR STYLE, YOUR CHOICE</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="section-heading">
+    <h2>منتجاتنا</h2>
+    <div class="yellow-line"></div>
+    <p>اختار المنتجات اللي حاب تشريها وزيدها للسلة</p>
+  </div>
+
+  <div class="products">
+
+    <article class="product">
+      <div class="product-image">
+        <img src="./67098287-29f6-4181-8c3d-e46261d2d004.jpg" alt="حاملة المفاتيح">
+      </div>
+      <div class="product-info">
+        <h3>حاملة المفاتيح</h3>
+        <div class="price">1500 <small>دج</small></div>
+        <button type="button" class="order-button" onclick="addToCart('حاملة المفاتيح', 1500, this)">
+          أضف إلى السلة
+        </button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="./9af27dc2-cc53-4f0e-9e6c-afce0af1eb29.jpg" alt="بورت كلي باللوغو">
+      </div>
+      <div class="product-info">
+        <h3>بورت كلي باللوغو</h3>
+        <div class="price">500 <small>دج</small></div>
+        <button type="button" class="order-button" onclick="addToCart('بورت كلي باللوغو', 500, this)">
+          أضف إلى السلة
+        </button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="./b72ff17d-d492-4a95-9eae-c68112010b7c.jpg" alt="بورت كلي عادي">
+      </div>
+      <div class="product-info">
+        <h3>بورت كلي عادي</h3>
+        <div class="price">500 <small>دج</small></div>
+        <button type="button" class="order-button" onclick="addToCart('بورت كلي عادي', 500, this)">
+          أضف إلى السلة
+        </button>
+      </div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="./f85238ca-2e4a-4c53-8749-4ddc3134fea4.jpg" alt="حصالة تحدي 50 مليون">
+      </div>
+      <div class="product-info">
+        <h3>حصالة تحدي 50 مليون</h3>
+        <div class="price">2000 <small>دج</small></div>
+        <button type="button" class="order-button" onclick="addToCart('حصالة تحدي 50 مليون', 2000, this)">
+          أضف إلى السلة
+        </button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- سلة المشتريات -->
+<section class="cart-section" id="cart">
+  <h2>🛒 سلة المشتريات</h2>
+  <p>المنتجات اللي اخترتهم تلقاهم هنا.</p>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-summary">
+    <p>
+      <span>عدد المنتجات:</span>
+      <strong id="totalQuantity">0</strong>
+    </p>
+
+    <p class="total">
+      <span>المبلغ الإجمالي:</span>
+      <strong><span id="totalPrice">0</span> دج</strong>
+    </p>
+
+    <button type="button" class="checkout-button" onclick="startCheckout()">
+      تأكيد الطلب
+    </button>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <strong>طلب سهل</strong>
+    <span>اطلب منتجاتك في خطوات بسيطة</span>
+  </div>
+  <div class="feature">
+    <strong>أسعار واضحة</strong>
+    <span>السعر والمبلغ الإجمالي ظاهرين</span>
+  </div>
+  <div class="feature">
+    <strong>تواصل مباشر</strong>
+    <span>تأكيد الطلب عبر Instagram</span>
+  </div>
+</section>
+
+</main>
+
+<footer id="contact">
+  <strong>CHEMS STORE</strong>
+  <span>شكراً على ثقتكم ❤️</span>
+  <a class="instagram-link instagram-smart-link"
+     href="https://www.instagram.com/chem.sstore/"
+     target="_blank" rel="noopener noreferrer">
+     راسلنا على Instagram
+  </a>
+</footer>
+
+<!-- نافذة معلومات الطلب -->
+<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+  <div class="modal-box">
+
+    <button type="button" class="close" onclick="closeOrder()" aria-label="إغلاق">&times;</button>
+
+    <h2 id="orderModalTitle">تأكيد الطلب</h2>
+    <p>عمّر معلوماتك باش نوجدو طلبك.</p>
+
+    <div class="chosen-product" id="chosenProduct"></div>
+
+    <form id="orderForm">
+
+      <div class="field">
+        <label for="firstName">الاسم</label>
+        <input id="firstName" type="text" placeholder="أدخل الاسم" required maxlength="40">
+      </div>
+
+      <div class="field">
+        <label for="lastName">اللقب</label>
+        <input id="lastName" type="text" placeholder="أدخل اللقب" required maxlength="40">
+      </div>
+
+      <div class="field">
+        <label for="phone">رقم الهاتف</label>
+        <input id="phone" type="tel" placeholder="مثال: 0550123456" required maxlength="20">
+      </div>
+
+      <div class="field">
+        <label for="wilaya">الولاية</label>
+        <select id="wilaya" required>
+          <option value="">اختر الولاية</option>
+          <option>أدرار</option>
+          <option>الشلف</option>
+          <option>الأغواط</option>
+          <option>أم البواقي</option>
+          <option>باتنة</option>
+          <option>بجاية</option>
+          <option>بسكرة</option>
+          <option>بشار</option>
+          <option>البليدة</option>
+          <option>البويرة</option>
+          <option>تمنراست</option>
+          <option>تبسة</option>
+          <option>تلمسان</option>
+          <option>تيارت</option>
+          <option>تيزي وزو</option>
+          <option>الجزائر</option>
+          <option>الجلفة</option>
+          <option>جيجل</option>
+          <option>سطيف</option>
+          <option>سعيدة</option>
+          <option>سكيكدة</option>
+          <option>سيدي بلعباس</option>
+          <option>عنابة</option>
+          <option>قالمة</option>
+          <option>قسنطينة</option>
+          <option>المدية</option>
+          <option>مستغانم</option>
+          <option>المسيلة</option>
+          <option>معسكر</option>
+          <option>ورقلة</option>
+          <option>وهران</option>
+          <option>البيض</option>
+          <option>إليزي</option>
+          <option>برج بوعريريج</option>
+          <option>بومرداس</option>
+          <option>الطارف</option>
+          <option>تندوف</option>
+          <option>تيسمسيلت</option>
+          <option>الوادي</option>
+          <option>خنشلة</option>
+          <option>سوق أهراس</option>
+          <option>تيبازة</option>
+          <option>ميلة</option>
+          <option>عين الدفلى</option>
+          <option>النعامة</option>
+          <option>عين تموشنت</option>
+          <option>غرداية</option>
+          <option>غليزان</option>
+          <option>تيميمون</option>
+          <option>برج باجي مختار</option>
+          <option>أولاد جلال</option>
+          <option>بني عباس</option>
+          <option>عين صالح</option>
+          <option>عين قزام</option>
+          <option>تقرت</option>
+          <option>جانت</option>
+          <option>المغير</option>
+          <option>المنيعة</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="district">الدائرة / المقاطعة</label>
+        <input id="district" type="text" placeholder="أدخل اسم الدائرة أو المقاطعة" required maxlength="60">
+      </div>
+
+      <div class="field">
+        <label for="address">العنوان بالتفصيل</label>
+        <input id="address" type="text" placeholder="الحي، الشارع، رقم المنزل..." required maxlength="150">
+      </div>
+
+      <button class="submit-button" type="submit">
+        تأكيد وتحضير الطلب
+      </button>
+
+    </form>
+
+    <div id="orderResult" hidden>
+      <h3>طلبك جاهز! 🎉</h3>
+      <p>انسخ الرسالة وبعدها افتح محادثة المتجر وأرسلها.</p>
+
+      <textarea id="orderMessage" class="order-message" readonly></textarea>
+
+      <button class="copy-button" type="button" onclick="copyOrderMessage()">
+        نسخ رسالة الطلب
+      </button>
+
+      <div class="result-actions">
+        <a id="instagramOrderLink" class="instagram-action"
+           href="https://ig.me/m/chem.sstore"
+           target="_blank" rel="noopener noreferrer">
+          فتح محادثة إنستغرام
+        </a>
+      </div>
+    </div>
+
+    <div class="note">
+      بعد فتح إنستغرام، الصق رسالة الطلب في المحادثة واضغط إرسال.
+    </div>
+
+  </div>
+</div>
+
+<script>
+const INSTAGRAM_DM_URL = "https://ig.me/m/chem.sstore";
+const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/chem.sstore/";
+const STORAGE_KEY = "chems_store_cart_v1";
+
+/* إغلاق شاشة الترحيب بشكل مضمون */
+(function initWelcomeSplash() {
+  const splashEl = document.getElementById("welcomeSplash");
+  if (!splashEl) return;
+
+  let finished = false;
+
+  function finishSplash() {
+    if (finished) return;
+    finished = true;
+    splashEl.classList.add("is-leaving");
+    setTimeout(() => {
+      splashEl.classList.add("is-gone");
+    }, 550);
+  }
+
+  splashEl.addEventListener("click", finishSplash);
+  splashEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      finishSplash();
+    }
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(finishSplash, 1100);
+  });
+
+  setTimeout(finishSplash, 1600);
+})();
+
+/* أنيميشن الإضافة للسلة */
+function animateAddButton(buttonEl) {
+  if (!buttonEl) return;
+
+  buttonEl.classList.remove("is-adding");
+  void buttonEl.offsetWidth;
+  buttonEl.classList.add("is-adding");
+
+  const originalText = buttonEl.dataset.originalText || buttonEl.textContent.trim();
+  buttonEl.dataset.originalText = originalText;
+  buttonEl.textContent = "تمت الإضافة ✓";
+
+  clearTimeout(buttonEl._resetTimer);
+  buttonEl._resetTimer = setTimeout(() => {
+    buttonEl.classList.remove("is-adding");
+    buttonEl.textContent = originalText;
+  }, 750);
+
+  const rect = buttonEl.getBoundingClientRect();
+  const badge = document.createElement("span");
+  badge.className = "plus-float";
+  badge.textContent = "+1";
+  badge.style.left = `${rect.left + rect.width / 2}px`;
+  badge.style.top = `${rect.top + rect.height / 2}px`;
+  document.body.appendChild(badge);
+  badge.addEventListener("animationend", () => badge.remove());
+
+  const cartNav = document.getElementById("cartNavLink");
+  if (cartNav) {
+    cartNav.classList.remove("is-bouncing");
+    void cartNav.offsetWidth;
+    cartNav.classList.add("is-bouncing");
+  }
+}
+
+function loadCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCart() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+  } catch {}
+}
+
+let cart = loadCart();
+const modal = document.getElementById("orderModal");
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
+function getInstagramUrl() {
+  return isMobileDevice() ? INSTAGRAM_DM_URL : INSTAGRAM_PROFILE_URL;
+}
+
+function updateInstagramLinks() {
+  const url = getInstagramUrl();
+  document.querySelectorAll(".instagram-smart-link").forEach(function(link) {
+    link.href = url;
+  });
+  document.getElementById("instagramOrderLink").href = url;
+}
+
+updateInstagramLinks();
+
+function addToCart(name, price, buttonEl) {
+  const existingProduct = cart.find(item => item.name === name);
+
+  if (existingProduct) {
+    existingProduct.quantity++;
+  } else {
+    cart.push({ name, price, quantity: 1 });
+  }
+
+  saveCart();
+  renderCart();
+  animateAddButton(buttonEl);
+}
+
+function getTotalQuantity() {
+  return cart.reduce((total, item) => total + item.quantity, 0);
+}
+
+function getCartTotal() {
+  return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
+
+function renderCart() {
+  const container = document.getElementById("cartItems");
+
+  document.getElementById("cartCount").textContent = getTotalQuantity();
+  document.getElementById("totalQuantity").textContent = getTotalQuantity();
+  document.getElementById("totalPrice").textContent = getCartTotal().toLocaleString("fr-FR");
+
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div class="empty-cart">
+        السلة فارغة حالياً. اختار المنتجات اللي تعجبك!
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = cart.map((item, index) => `
+    <div class="cart-item">
+      <div>
+        <h3>${item.name}</h3>
+        <p>${item.price.toLocaleString("fr-FR")} دج للقطعة</p>
+        <p>المجموع: ${(item.price * item.quantity).toLocaleString("fr-FR")} دج</p>
+      </div>
+
+      <div class="quantity-controls">
+        <button type="button" onclick="changeQuantity(${index}, 1)">+</button>
+        <span>${item.quantity}</span>
+        <button type="button" onclick="changeQuantity(${index}, -1)">−</button>
+        <button type="button" class="remove-button" onclick="removeFromCart(${index})">حذف</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function changeQuantity(index, amount) {
+  if (!cart[index]) return;
+
+  cart[index].quantity += amount;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeFromCart(index) {
+  if (!cart[index]) return;
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function startCheckout() {
+  if (cart.length === 0) {
+    alert("السلة فارغة! أضف منتجاً واحداً على الأقل.");
+    return;
+  }
+
+  const summary = cart.map(item =>
+    `${item.name} × ${item.quantity} = ${(item.price * item.quantity).toLocaleString("fr-FR")} دج`
+  ).join("<br>");
+
+  document.getElementById("chosenProduct").innerHTML =
+    "<strong>ملخص مشترياتك:</strong><br>" +
+    summary +
+    "<br><br><strong>عدد القطع: " + getTotalQuantity() +
+    "</strong><br><strong>المبلغ الإجمالي: " +
+    getCartTotal().toLocaleString("fr-FR") + " دج</strong>";
+
+  document.getElementById("orderForm").hidden = false;
+  document.getElementById("orderResult").hidden = true;
+
+  modal.classList.add("show");
+  document.getElementById("firstName").focus();
+}
+
+function closeOrder() {
+  modal.classList.remove("show");
+}
+
+modal.addEventListener("click", function(event) {
+  if (event.target === modal) closeOrder();
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape" && modal

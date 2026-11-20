@@ -5,341 +5,455 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffd21f">
 <title>CHEMS STORE | شمس ستور</title>
+
 <style>
 :root {
-  --yellow: #ffd21f;
-  --black: #111;
-  --white: #fff;
+  --yellow:#ffd21f;
+  --black:#111;
+  --white:#fff;
+  --gray:#f5f5f5;
+  --green:#16834a;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Arial, Tahoma, sans-serif;
-  color: var(--black);
-  background: #fff;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  color:var(--black);
+  background:#fff;
 }
-a { text-decoration: none; color: inherit; }
-button, input, textarea { font: inherit; }
-.topbar {
-  background: var(--black);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 13px;
+a{text-decoration:none;color:inherit}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.topbar{
+  background:var(--black);
+  color:white;
+  text-align:center;
+  padding:10px;
+  font-size:13px;
 }
-header {
-  background: var(--yellow);
-  padding: 22px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-bottom: 4px solid var(--black);
+header{
+  background:var(--yellow);
+  padding:18px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border-bottom:4px solid var(--black);
+  flex-wrap:wrap;
 }
-.brand { direction: ltr; text-align: right; }
-.brand h1 {
-  margin: 0;
-  font-size: clamp(30px, 5vw, 52px);
-  font-weight: 1000;
-  letter-spacing: -2px;
+.brand{direction:ltr;text-align:right}
+.brand h1{
+  margin:0;
+  font-size:clamp(25px,5vw,42px);
+  font-weight:1000;
+  letter-spacing:-2px;
 }
-.brand span {
-  display: block;
-  direction: rtl;
-  font-size: 13px;
-  font-weight: bold;
-  margin-top: 8px;
+.brand span{
+  display:block;
+  direction:rtl;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:5px;
 }
-nav {
-  display: flex;
-  gap: 22px;
-  font-weight: bold;
+nav{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-weight:bold;
+  flex-wrap:wrap;
 }
-nav a:hover { text-decoration: underline; }
-.hero {
-  background: var(--yellow);
-  padding: 55px 7% 65px;
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  align-items: center;
-  gap: 30px;
+nav a:hover{text-decoration:underline}
+.cart-nav{
+  background:var(--black);
+  color:var(--yellow);
+  padding:11px 15px;
+  border:0;
+  font-weight:bold;
 }
-.eyebrow {
-  display: inline-block;
-  background: var(--black);
-  color: var(--yellow);
-  padding: 8px 14px;
-  font-weight: bold;
-  font-size: 13px;
-  margin-bottom: 15px;
+.hero{
+  background:var(--yellow);
+  padding:55px 7% 65px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  gap:30px;
 }
-.hero h2 {
-  font-size: clamp(34px, 5vw, 60px);
-  line-height: 1.15;
-  margin: 0 0 15px;
-  font-weight: 1000;
+.eyebrow{
+  display:inline-block;
+  background:var(--black);
+  color:var(--yellow);
+  padding:8px 14px;
+  font-weight:bold;
+  font-size:13px;
+  margin-bottom:15px;
 }
-.hero p {
-  font-size: 17px;
-  line-height: 1.8;
-  margin: 0 0 25px;
+.hero h2{
+  font-size:clamp(34px,5vw,60px);
+  line-height:1.15;
+  margin:0 0 15px;
+  font-weight:1000;
 }
-.hero-button {
-  display: inline-block;
-  background: var(--black);
-  color: white;
-  padding: 15px 25px;
-  font-weight: bold;
-  border: 2px solid var(--black);
+.hero p{font-size:17px;line-height:1.8;margin:0 0 25px}
+.hero-button{
+  display:inline-block;
+  background:var(--black);
+  color:white;
+  padding:15px 25px;
+  font-weight:bold;
+  border:2px solid var(--black);
 }
-.hero-button:hover {
-  background: white;
-  color: var(--black);
+.hero-button:hover{background:white;color:var(--black)}
+.hero-art{
+  background:var(--black);
+  color:var(--yellow);
+  min-height:230px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:25px;
+  transform:rotate(2deg);
+  box-shadow:12px 12px 0 white;
 }
-.hero-art {
-  background: var(--black);
-  color: var(--yellow);
-  min-height: 230px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 25px;
-  transform: rotate(2deg);
-  box-shadow: 12px 12px 0 white;
+.hero-art strong{
+  font-size:clamp(35px,5vw,60px);
+  direction:ltr;
+  letter-spacing:-2px;
 }
-.hero-art strong {
-  font-size: clamp(35px, 5vw, 60px);
-  direction: ltr;
-  letter-spacing: -2px;
+.hero-art span{
+  display:block;
+  color:white;
+  font-weight:bold;
+  margin-top:12px;
 }
-.hero-art span {
-  display: block;
-  color: white;
-  font-weight: bold;
-  margin-top: 12px;
+.section{padding:55px 7%}
+.section-heading{margin-bottom:25px}
+.section-heading h2{
+  font-size:clamp(27px,4vw,38px);
+  margin:0;
+  font-weight:1000;
 }
-.section { padding: 65px 7%; }
-.section-heading { margin-bottom: 30px; }
-.section-heading h2 {
-  font-size: clamp(27px, 4vw, 38px);
-  margin: 0;
-  font-weight: 1000;
+.section-heading p{color:#666}
+.yellow-line{
+  width:65px;height:6px;
+  background:var(--yellow);
+  margin-top:12px;
 }
-.section-heading p { color: #666; }
-.yellow-line {
-  width: 65px;
-  height: 6px;
-  background: var(--yellow);
-  margin-top: 12px;
+.shop-tools{
+  display:flex;
+  gap:12px;
+  margin:25px 0;
+  flex-wrap:wrap;
 }
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+.search-box{
+  flex:1;
+  min-width:200px;
+  padding:14px;
+  border:2px solid #ddd;
+  outline:none;
+  direction:rtl;
 }
-.product {
-  border: 2px solid #eee;
-  background: white;
-  transition: .25s;
-  overflow: hidden;
+.search-box:focus{border-color:var(--yellow)}
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
 }
-.product:hover {
-  border-color: var(--yellow);
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px #00000012;
+.product{
+  border:2px solid #eee;
+  background:white;
+  transition:.25s;
+  overflow:hidden;
+  position:relative;
 }
-.product-image {
-  background: #f5f5f5;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
+.product:hover{
+  border-color:var(--yellow);
+  transform:translateY(-5px);
+  box-shadow:0 12px 25px #00000012;
 }
-.product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.product-image{
+  background:#f5f5f5;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  cursor:pointer;
 }
-.product-info { padding: 18px; }
-.product-info h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-  min-height: 44px;
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:.3s;
 }
-.price {
-  font-size: 21px;
-  font-weight: 1000;
-  margin-bottom: 15px;
+.product:hover .product-image img{transform:scale(1.04)}
+.product-info{padding:16px}
+.product-info h3{
+  margin:0 0 10px;
+  font-size:17px;
+  min-height:40px;
 }
-.price small { font-size: 13px; color: #666; }
-.order-button {
-  border: 2px solid var(--black);
-  background: var(--yellow);
-  color: var(--black);
-  padding: 12px;
-  width: 100%;
-  font-weight: 900;
-  cursor: pointer;
+.price{
+  font-size:21px;
+  font-weight:1000;
+  margin-bottom:13px;
 }
-.order-button:hover {
-  background: var(--black);
-  color: var(--yellow);
+.price small{font-size:13px;color:#666}
+.old-price{
+  font-size:14px;
+  color:#888;
+  text-decoration:line-through;
+  margin-right:6px;
 }
-.features {
-  background: var(--black);
-  color: white;
-  padding: 35px 7%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  text-align: center;
+.discount-tag{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#d71920;
+  color:white;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:bold;
+  z-index:2;
 }
-.feature strong {
-  display: block;
-  color: var(--yellow);
-  font-size: 18px;
-  margin-bottom: 8px;
+.product-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
 }
-.feature span { color: #ddd; font-size: 14px; }
-footer {
-  background: var(--yellow);
-  padding: 30px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-weight: bold;
+.order-button,.details-button{
+  border:2px solid var(--black);
+  padding:11px 5px;
+  font-weight:900;
+  font-size:13px;
 }
-footer strong {
-  direction: ltr;
-  font-size: 23px;
+.order-button{background:var(--yellow);color:var(--black)}
+.details-button{background:white;color:var(--black)}
+.order-button:hover{background:var(--black);color:var(--yellow)}
+.details-button:hover{background:#eee}
+.no-results{
+  display:none;
+  text-align:center;
+  padding:30px;
+  background:var(--gray);
+  margin-top:20px;
 }
-.instagram-link {
-  background: var(--black);
-  color: white;
-  padding: 12px 18px;
-  display: inline-block;
+.features{
+  background:var(--black);
+  color:white;
+  padding:35px 7%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  text-align:center;
+}
+.feature strong{
+  display:block;
+  color:var(--yellow);
+  font-size:18px;
+  margin-bottom:8px;
+}
+.feature span{color:#ddd;font-size:14px}
+footer{
+  background:var(--yellow);
+  padding:30px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  font-weight:bold;
+}
+footer strong{direction:ltr;font-size:23px}
+.instagram-link{
+  background:var(--black);
+  color:white;
+  padding:12px 18px;
+  display:inline-block;
 }
 
-/* نافذة الطلب */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 20;
-  background: #000b;
-  padding: 18px;
-  align-items: center;
-  justify-content: center;
+/* السلة */
+.cart-section{background:#f7f7f7}
+.cart-empty{
+  text-align:center;
+  color:#777;
+  padding:25px;
+  background:white;
 }
-.modal.show { display: flex; }
-.modal-box {
-  background: white;
-  width: 100%;
-  max-width: 430px;
-  padding: 25px;
-  border-top: 7px solid var(--yellow);
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
+.cart-list{display:grid;gap:12px}
+.cart-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:white;
+  padding:15px;
+  border:1px solid #eee;
+  flex-wrap:wrap;
 }
-.close {
-  position: absolute;
-  left: 15px;
-  top: 12px;
-  border: 0;
-  background: transparent;
-  font-size: 28px;
-  cursor: pointer;
+.cart-item-info{flex:1;min-width:130px}
+.cart-item-info strong{display:block;margin-bottom:6px}
+.cart-item-info small{color:#666}
+.quantity-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
-.modal-box h2 { margin: 5px 0 8px; }
-.modal-box > p { color: #666; font-size: 14px; }
-.chosen-product {
-  background: #fff7d6;
-  padding: 12px;
-  font-weight: bold;
-  margin: 18px 0;
+.quantity-controls button{
+  width:32px;height:32px;
+  border:0;background:var(--yellow);
+  font-weight:bold;
 }
-.field { margin-bottom: 14px; }
-.field label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 7px;
-  font-size: 14px;
+.remove-button{
+  background:#eee!important;
+  color:#b00020;
 }
-.field input {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #ccc;
-  outline: none;
-  direction: rtl;
+.cart-total{
+  background:var(--black);
+  color:white;
+  padding:20px;
+  margin-top:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
 }
-.field input:focus { border: 2px solid var(--yellow); }
-.submit-button, .copy-button {
-  width: 100%;
-  padding: 14px;
-  border: 0;
-  background: var(--yellow);
-  color: var(--black);
-  font-weight: 900;
-  cursor: pointer;
+.cart-total strong{color:var(--yellow);font-size:23px}
+.checkout-button{
+  width:100%;
+  margin-top:15px;
+  background:var(--yellow);
+  border:2px solid var(--black);
+  padding:15px;
+  font-weight:900;
 }
-.copy-button {
-  background: var(--black);
-  color: white;
-  margin-bottom: 12px;
+.checkout-button:hover{background:var(--black);color:var(--yellow)}
+
+/* النوافذ */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:#000b;
+  padding:15px;
+  align-items:center;
+  justify-content:center;
 }
-.order-message {
-  width: 100%;
-  min-height: 160px;
-  padding: 12px;
-  direction: rtl;
-  text-align: right;
-  border: 1px solid #ccc;
-  resize: vertical;
-  line-height: 1.7;
-  margin: 12px 0;
+.modal.show{display:flex}
+.modal-box{
+  background:white;
+  width:100%;
+  max-width:480px;
+  padding:24px;
+  border-top:7px solid var(--yellow);
+  position:relative;
+  max-height:90vh;
+  overflow-y:auto;
 }
-.result-actions { margin-top: 15px; }
-.result-actions a {
-  display: block;
-  text-align: center;
-  padding: 14px;
-  font-weight: bold;
+.close{
+  position:absolute;
+  left:15px;
+  top:10px;
+  border:0;
+  background:transparent;
+  font-size:28px;
 }
-.instagram-action {
-  background: var(--yellow);
-  color: var(--black);
+.modal-box h2{margin:5px 0 8px}
+.modal-box>p{color:#666;font-size:14px;line-height:1.7}
+.detail-image{
+  width:100%;
+  max-height:280px;
+  object-fit:contain;
+  background:#f5f5f5;
+  margin:15px 0;
 }
-.note {
-  font-size: 12px;
-  color: #777;
-  line-height: 1.6;
-  margin-top: 12px;
+.detail-price{font-size:24px;font-weight:1000;margin:15px 0}
+.field{margin-bottom:14px}
+.field label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:7px;
+  font-size:14px;
 }
-@media(max-width:850px) {
-  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero { grid-template-columns: 1fr; }
-  .hero-art { min-height: 170px; }
+.field input,.field textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  outline:none;
+  direction:rtl;
 }
-@media(max-width:560px) {
-  header { padding: 18px 5%; }
-  nav { gap: 12px; font-size: 13px; }
-  .brand h1 { font-size: 25px; }
-  .brand span { font-size: 10px; }
-  .hero { padding: 42px 6%; }
-  .section { padding: 45px 5%; }
-  .products { gap: 12px; }
-  .product-info { padding: 12px; }
-  .product-info h3 { font-size: 15px; }
-  .price { font-size: 18px; }
-  .features { grid-template-columns: 1fr; }
+.field input:focus,.field textarea:focus{border:2px solid var(--yellow)}
+.field textarea{min-height:75px;resize:vertical}
+.chosen-product{
+  background:#fff7d6;
+  padding:13px;
+  font-weight:bold;
+  margin:18px 0;
+}
+.submit-button,.copy-button{
+  width:100%;
+  padding:14px;
+  border:0;
+  background:var(--yellow);
+  color:var(--black);
+  font-weight:900;
+}
+.copy-button{
+  background:var(--black);
+  color:white;
+  margin-bottom:12px;
+}
+.order-message{
+  width:100%;
+  min-height:190px;
+  padding:12px;
+  direction:rtl;
+  text-align:right;
+  border:1px solid #ccc;
+  resize:vertical;
+  line-height:1.7;
+  margin:12px 0;
+}
+.instagram-action{
+  display:block;
+  text-align:center;
+  padding:14px;
+  font-weight:bold;
+  background:var(--yellow);
+  color:var(--black);
+}
+.note{
+  font-size:12px;
+  color:#777;
+  line-height:1.6;
+  margin-top:12px;
+}
+@media(max-width:850px){
+  .products{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{grid-template-columns:1fr}
+  .hero-art{min-height:170px}
+}
+@media(max-width:560px){
+  header{padding:16px 5%}
+  nav{gap:12px;font-size:12px}
+  .brand h1{font-size:24px}
+  .brand span{font-size:10px}
+  .hero{padding:42px 6%}
+  .section{padding:40px 5%}
+  .products{gap:10px}
+  .product-info{padding:10px}
+  .product-info h3{font-size:14px}
+  .price{font-size:17px}
+  .product-actions{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  footer{padding:25px 5%}
+  .cart-item{align-items:flex-start}
 }
 </style>
 </head>
 
 <body>
+
 <div class="topbar">
   مرحبا بيكم في CHEMS STORE — منتجات مميزة بأسعار مناسبة
 </div>
@@ -352,7 +466,11 @@ footer strong {
   <nav>
     <a href="#home">الرئيسية</a>
     <a href="#products">المنتجات</a>
+    <a href="#cart">السلة</a>
     <a href="#contact">تواصل معنا</a>
+    <button class="cart-nav" onclick="scrollToCart()">
+      🛒 السلة (<span id="cartCount">0</span>)
+    </button>
   </nav>
 </header>
 
@@ -363,7 +481,7 @@ footer strong {
     <h2>اختار اللي يعجبك،<br>واطلبه بسهولة!</h2>
     <p>
       اكتشف منتجاتنا، شوف التفاصيل والأسعار،
-      واطلب منتجك في خطوات بسيطة عبر Instagram.
+      واجمع مشترياتك في سلة واحدة واطلبها عبر Instagram.
     </p>
     <a class="hero-button" href="#products">اكتشف المنتجات ←</a>
   </div>
@@ -379,60 +497,39 @@ footer strong {
   <div class="section-heading">
     <h2>منتجاتنا</h2>
     <div class="yellow-line"></div>
-    <p>اختار المنتج اللي حاب تطلبه</p>
+    <p>قلب على المنتج اللي يعجبك وزيدو للسلة</p>
   </div>
 
-  <div class="products">
-    <article class="product">
-      <div class="product-image">
-        <img src="67098287-29f6-4181-8c3d-e46261d2d004.jpg" alt="حاملة المفاتيح">
-      </div>
-      <div class="product-info">
-        <h3>حاملة المفاتيح</h3>
-        <div class="price">1500 <small>دج</small></div>
-        <button class="order-button" onclick="openOrder('حاملة المفاتيح',1500)">اطلب الآن</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image">
-        <img src="9af27dc2-cc53-4f0e-9e6c-afce0af1eb29.jpg" alt="بورت كلي باللوغو">
-      </div>
-      <div class="product-info">
-        <h3>بورت كلي باللوغو</h3>
-        <div class="price">500 <small>دج</small></div>
-        <button class="order-button" onclick="openOrder('بورت كلي باللوغو',500)">اطلب الآن</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image">
-        <img src="b72ff17d-d492-4a95-9eae-c68112010b7c.jpg" alt="بورت كلي عادي">
-      </div>
-      <div class="product-info">
-        <h3>بورت كلي عادي</h3>
-        <div class="price">500 <small>دج</small></div>
-        <button class="order-button" onclick="openOrder('بورت كلي عادي',500)">اطلب الآن</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image">
-        <img src="f85238ca-2e4a-4c53-8749-4ddc3134fea4.jpg" alt="حصالة تحدي 50 مليون">
-      </div>
-      <div class="product-info">
-        <h3>حصالة تحدي 50 مليون</h3>
-        <div class="price">2000 <small>دج</small></div>
-        <button class="order-button" onclick="openOrder('حصالة تحدي 50 مليون',2000)">اطلب الآن</button>
-      </div>
-    </article>
+  <div class="shop-tools">
+    <input
+      id="searchInput"
+      class="search-box"
+      type="search"
+      placeholder="🔍 ابحث عن منتج..."
+      oninput="renderProducts()"
+    >
   </div>
+
+  <div class="products" id="productsGrid"></div>
+  <div class="no-results" id="noResults">
+    ما لقيناش منتجات بهذا الاسم.
+  </div>
+</section>
+
+<section class="section cart-section" id="cart">
+  <div class="section-heading">
+    <h2>🛒 سلة المشتريات</h2>
+    <div class="yellow-line"></div>
+    <p>راجع المنتجات والكميات قبل تأكيد الطلب</p>
+  </div>
+
+  <div id="cartContent"></div>
 </section>
 
 <section class="features">
   <div class="feature">
     <strong>طلب سهل</strong>
-    <span>اطلب منتجك في خطوات بسيطة</span>
+    <span>اجمع منتجاتك في سلة واحدة</span>
   </div>
   <div class="feature">
     <strong>أسعار واضحة</strong>
@@ -455,10 +552,19 @@ footer strong {
   </a>
 </footer>
 
+<!-- نافذة تفاصيل المنتج -->
+<div class="modal" id="detailsModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="close" onclick="closeDetails()" aria-label="إغلاق">&times;</button>
+    <div id="detailsContent"></div>
+  </div>
+</div>
+
+<!-- نافذة إتمام الطلب -->
 <div class="modal" id="orderModal" role="dialog" aria-modal="true">
   <div class="modal-box">
     <button class="close" onclick="closeOrder()" aria-label="إغلاق">&times;</button>
-    <h2>تأكيد الطلب</h2>
+    <h2>إتمام الطلب</h2>
     <p>عمّر معلوماتك باش نوجدو طلبك.</p>
     <div class="chosen-product" id="chosenProduct"></div>
 
@@ -475,19 +581,31 @@ footer strong {
         <label for="phone">رقم الهاتف</label>
         <input id="phone" type="tel" placeholder="أدخل رقم الهاتف" required maxlength="20">
       </div>
+      <div class="field">
+        <label for="wilaya">الولاية</label>
+        <input id="wilaya" type="text" placeholder="مثال: الجزائر" required maxlength="40">
+      </div>
+      <div class="field">
+        <label for="city">البلدية</label>
+        <input id="city" type="text" placeholder="أدخل البلدية" required maxlength="50">
+      </div>
+      <div class="field">
+        <label for="address">العنوان بالتفصيل</label>
+        <textarea id="address" placeholder="الحي، الشارع، رقم المنزل..." required maxlength="200"></textarea>
+      </div>
       <button class="submit-button" type="submit">تأكيد الطلب</button>
     </form>
 
     <div id="orderResult" hidden>
-      <h3>طلبك جاهز!</h3>
-      <p>انسخ الرسالة أولاً، وبعدها افتح محادثة المتجر وأرسلها.</p>
+      <h3>طلبك جاهز! 🎉</h3>
+      <p>انسخ الرسالة وافتح محادثة المتجر لإرسال الطلب.</p>
       <textarea id="orderMessage" class="order-message" readonly></textarea>
       <button class="copy-button" type="button" onclick="copyOrderMessage()">
         نسخ رسالة الطلب
       </button>
       <div class="result-actions">
         <a id="instagramOrderLink" class="instagram-action"
-           href="https://www.instagram.com/chem.sstore/"
+           href="https://ig.me/m/chem.sstore"
            target="_blank" rel="noopener">
           فتح محادثة إنستغرام
         </a>
@@ -495,107 +613,343 @@ footer strong {
     </div>
 
     <div class="note">
-      بعد فتح إنستغرام، الصق رسالة الطلب في المحادثة واضغط إرسال.
+      ملاحظة: بعد فتح إنستغرام، الصق رسالة الطلب في المحادثة واضغط إرسال.
     </div>
   </div>
 </div>
 
 <script>
-let selectedProduct = "";
-let selectedPrice = 0;
+/*
+  إعداد المنتجات:
+  price = السعر الحالي
+  oldPrice = السعر القديم (اجعله رقماً أكبر من السعر الحالي لإظهار التخفيض)
+  description = وصف المنتج
+*/
 
-const modal = document.getElementById("orderModal");
+const products = [
+  {
+    id:1,
+    name:"حاملة المفاتيح",
+    price:1500,
+    oldPrice:null,
+    image:"67098287-29f6-4181-8c3d-e46261d2d004.jpg",
+    description:"حاملة مفاتيح بتصميم مميز، مناسبة للاستعمال اليومي."
+  },
+  {
+    id:2,
+    name:"بورت كلي باللوغو",
+    price:500,
+    oldPrice:null,
+    image:"9af27dc2-cc53-4f0e-9e6c-afce0af1eb29.jpg",
+    description:"بورت كلي باللوغو، تصميم أنيق وبسيط."
+  },
+  {
+    id:3,
+    name:"بورت كلي عادي",
+    price:500,
+    oldPrice:null,
+    image:"b72ff17d-d492-4a95-9eae-c68112010b7c.jpg",
+    description:"بورت كلي عملي للاستعمال اليومي."
+  },
+  {
+    id:4,
+    name:"حصالة تحدي 50 مليون",
+    price:2000,
+    oldPrice:null,
+    image:"f85238ca-2e4a-4c53-8749-4ddc3134fea4.jpg",
+    description:"حصالة تساعدك على تنظيم الادخار وتتبع هدفك."
+  }
+];
+
 const INSTAGRAM_DM_URL = "https://ig.me/m/chem.sstore";
 const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/chem.sstore/";
 
-function isMobileDevice() {
-  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+let cart = [];
+let checkoutItems = [];
+
+function formatPrice(price){
+  return Number(price).toLocaleString("fr-FR") + " دج";
 }
 
-function getInstagramUrl() {
-  return isMobileDevice() ? INSTAGRAM_DM_URL : INSTAGRAM_PROFILE_URL;
+function getProduct(id){
+  return products.find(p => p.id === Number(id));
 }
 
-function updateInstagramLinks() {
-  document.querySelectorAll(".instagram-smart-link").forEach(function(link) {
-    link.href = getInstagramUrl();
-  });
-  document.getElementById("instagramOrderLink").href = getInstagramUrl();
+function renderProducts(){
+  const search = document.getElementById("searchInput").value
+    .trim().toLowerCase();
+
+  const filtered = products.filter(product =>
+    product.name.toLowerCase().includes(search)
+  );
+
+  const grid = document.getElementById("productsGrid");
+  const noResults = document.getElementById("noResults");
+
+  grid.innerHTML = filtered.map(product => {
+    const hasDiscount = product.oldPrice &&
+      Number(product.oldPrice) > Number(product.price);
+
+    const discount = hasDiscount
+      ? Math.round((1 - product.price / product.oldPrice) * 100)
+      : 0;
+
+    return `
+      <article class="product">
+        ${hasDiscount ? <span class="discount-tag">-${discount}%</span> : ""}
+        <div class="product-image" onclick="openDetails(${product.id})">
+          <img src="${product.image}" alt="${product.name}" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3>${product.name}</h3>
+          <div class="price">
+            ${formatPrice(product.price)}
+            ${hasDiscount ? <span class="old-price">${formatPrice(product.oldPrice)}</span> : ""}
+          </div>
+          <div class="product-actions">
+            <button class="order-button" onclick="addToCart(${product.id})">
+              + أضف للسلة
+            </button>
+            <button class="details-button" onclick="openDetails(${product.id})">
+              التفاصيل
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  noResults.style.display = filtered.length ? "none" : "block";
 }
 
-updateInstagramLinks();
+function addToCart(id){
+  const product = getProduct(id);
+  if(!product) return;
 
-function openOrder(product, price) {
-  selectedProduct = product;
-  selectedPrice = price;
+  const existing = cart.find(item => item.id === product.id);
+
+  if(existing){
+    existing.quantity++;
+  }else{
+    cart.push({...product, quantity:1});
+  }
+
+  renderCart();
+  alert("تمت إضافة المنتج للسلة 🛒");
+}
+
+function changeQuantity(id, amount){
+  const item = cart.find(p => p.id === Number(id));
+  if(!item) return;
+
+  item.quantity += amount;
+
+  if(item.quantity <= 0){
+    cart = cart.filter(p => p.id !== Number(id));
+  }
+
+  renderCart();
+}
+
+function removeFromCart(id){
+  cart = cart.filter(p => p.id !== Number(id));
+  renderCart();
+}
+
+function getCartTotal(){
+  return cart.reduce((sum,item) =>
+    sum + item.price * item.quantity, 0
+  );
+}
+
+function renderCart(){
+  const container = document.getElementById("cartContent");
+  const count = cart.reduce((sum,item) => sum + item.quantity, 0);
+
+  document.getElementById("cartCount").textContent = count;
+
+  if(!cart.length){
+    container.innerHTML = `
+      <div class="cart-empty">
+        السلة فارغة حالياً 🛒<br>
+        اختار منتجاتك من القائمة وأضفها هنا.
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="cart-list">
+      ${cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <strong>${item.name}</strong>
+            <small>${formatPrice(item.price)} للوحدة</small>
+            <div><b>${formatPrice(item.price * item.quantity)}</b></div>
+          </div>
+          <div class="quantity-controls">
+            <button onclick="changeQuantity(${item.id},1)">+</button>
+            <strong>${item.quantity}</strong>
+            <button onclick="changeQuantity(${item.id},-1)">−</button>
+            <button class="remove-button" onclick="removeFromCart(${item.id})">حذف</button>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+    <div class="cart-total">
+      <span>المجموع الإجمالي</span>
+      <strong>${formatPrice(getCartTotal())}</strong>
+    </div>
+    <button class="checkout-button" onclick="startCheckout()">
+      متابعة وإتمام الطلب ←
+    </button>
+  `;
+}
+
+function scrollToCart(){
+  document.getElementById("cart").scrollIntoView({behavior:"smooth"});
+}
+
+function openDetails(id){
+  const product = getProduct(id);
+  if(!product) return;
+
+  const hasDiscount = product.oldPrice &&
+    Number(product.oldPrice) > Number(product.price);
+
+  document.getElementById("detailsContent").innerHTML = `
+    <h2>${product.name}</h2>
+    <img class="detail-image" src="${product.image}" alt="${product.name}">
+    <p>${product.description}</p>
+    <div class="detail-price">
+      ${formatPrice(product.price)}
+      ${hasDiscount ? <span class="old-price">${formatPrice(product.oldPrice)}</span> : ""}
+    </div>
+    <button class="submit-button" onclick="addToCart(${product.id});closeDetails()">
+      + أضف إلى السلة
+    </button>
+  `;
+
+  document.getElementById("detailsModal").classList.add("show");
+}
+
+function closeDetails(){
+  document.getElementById("detailsModal").classList.remove("show");
+}
+
+function startCheckout(){
+  if(!cart.length){
+    alert("السلة فارغة!");
+    return;
+  }
+
+  checkoutItems = cart.map(item => ({...item}));
   document.getElementById("chosenProduct").textContent =
-    product + " — " + price + " دج";
+    checkoutItems.map(item =>
+      ${item.name} × ${item.quantity}
+    ).join(" | ") + " — المجموع: " + formatPrice(getCartTotal());
+
   document.getElementById("orderForm").hidden = false;
   document.getElementById("orderResult").hidden = true;
-  modal.classList.add("show");
-  document.getElementById("firstName").focus();
+  document.getElementById("orderModal").classList.add("show");
 }
 
-function closeOrder() {
-  modal.classList.remove("show");
+function closeOrder(){
+  document.getElementById("orderModal").classList.remove("show");
 }
 
-modal.addEventListener("click", function(event) {
-  if (event.target === modal) closeOrder();
+document.getElementById("orderModal").addEventListener("click",function(event){
+  if(event.target === this) closeOrder();
 });
 
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") closeOrder();
+document.getElementById("detailsModal").addEventListener("click",function(event){
+  if(event.target === this) closeDetails();
 });
 
-document.getElementById("orderForm").addEventListener("submit", function(event) {
+document.addEventListener("keydown",function(event){
+  if(event.key === "Escape"){
+    closeOrder();
+    closeDetails();
+  }
+});
+
+document.getElementById("orderForm").addEventListener("submit",function(event){
   event.preventDefault();
 
   const firstName = document.getElementById("firstName").value.trim();
   const lastName = document.getElementById("lastName").value.trim();
   const phone = document.getElementById("phone").value.trim();
+  const wilaya = document.getElementById("wilaya").value.trim();
+  const city = document.getElementById("city").value.trim();
+  const address = document.getElementById("address").value.trim();
 
-  if (!firstName || !lastName || !phone) {
+  if(!firstName || !lastName || !phone || !wilaya || !city || !address){
     alert("من فضلك عمّر جميع الخانات.");
     return;
   }
 
+  const itemsText = checkoutItems.map(item =>
+    - ${item.name} | الكمية: ${item.quantity} | ${formatPrice(item.price * item.quantity)}
+  ).join("\n");
+
+  const total = checkoutItems.reduce((sum,item) =>
+    sum + item.price * item.quantity, 0
+  );
+
   const message =
-`السلام عليكم، حاب نأكد طلبي من CHEMS STORE:
-المنتج: ${selectedProduct}
-السعر: ${selectedPrice} دج
+`السلام عليكم، حاب نأكد طلبي من CHEMS STORE 🛍️
+
+المنتجات:
+${itemsText}
+
+المجموع: ${formatPrice(total)}
+
+معلومات الزبون:
 الاسم: ${firstName}
 اللقب: ${lastName}
-رقم الهاتف: ${phone}`;
+رقم الهاتف: ${phone}
+الولاية: ${wilaya}
+البلدية: ${city}
+العنوان: ${address}
+
+شكراً لكم.`;
 
   document.getElementById("orderMessage").value = message;
   document.getElementById("orderForm").hidden = true;
   document.getElementById("orderResult").hidden = false;
 
-  updateInstagramLinks();
+  document.getElementById("instagramOrderLink").href = INSTAGRAM_DM_URL;
 });
 
-async function copyOrderMessage() {
+async function copyOrderMessage(){
   const field = document.getElementById("orderMessage");
   const message = field.value;
 
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
+  try{
+    if(navigator.clipboard && window.isSecureContext){
       await navigator.clipboard.writeText(message);
-    } else {
+    }else{
       field.focus();
       field.select();
       const copied = document.execCommand("copy");
-      if (!copied) throw new Error("Copy failed");
+      if(!copied) throw new Error("Copy failed");
     }
 
     alert("تم نسخ رسالة الطلب! افتح إنستغرام والصقها في المحادثة.");
-  } catch (error) {
+  }catch(error){
     field.focus();
     field.select();
-    alert("حدد الرسالة وانسخها يدوياً، ثم افتح محادثة إنستغرام.");
+    alert("حدد الرسالة وانسخها يدوياً، ثم افتح إنستغرام.");
   }
 }
+
+document.querySelectorAll(".instagram-smart-link").forEach(link => {
+  link.href = INSTAGRAM_DM_URL;
+});
+
+renderProducts();
+renderCart();
 </script>
+
 </body>
 </html>

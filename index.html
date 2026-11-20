@@ -953,9 +953,9 @@ document.getElementById("cartContent").addEventListener("click", function(event)
     if (item.quantity <= 0) {
       cart = cart.filter(product => product.id !== id);
     }
-  } else if (action === "remove") {
-    cart = cart.filter(product => product.id !== id);
-  }
+  } else if (action === "remove")const summary = cart.map(item =>
+  $DIL0 × $DIL1 = $DIL2
+).join("\n");
 
   renderCart();
 });
@@ -1008,7 +1008,9 @@ function startCheckout() {
 }
 
 function closeOrder() {
-  document.getElementById("orderModal").classList.remove("show");
+const productsText = cart.map(item =>
+  - $DIL3\nالكمية: $DIL4\nالسعر: $DIL5
+).join("\n\n");
 }
 
 /* إغلاق النوافذ */

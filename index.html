@@ -10,7 +10,6 @@
 :root {
   --yellow: #ffd21f;
   --black: #111;
-  --white: #fff;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -21,7 +20,7 @@ body {
   background: #fff;
 }
 a { text-decoration: none; color: inherit; }
-button, input, textarea, select { font: inherit; }
+button, input, select, textarea { font: inherit; }
 
 .topbar {
   background: var(--black);
@@ -55,17 +54,16 @@ header {
 }
 nav {
   display: flex;
-  gap: 18px;
+  gap: 15px;
   align-items: center;
   font-weight: bold;
+  flex-wrap: wrap;
 }
 nav a:hover { text-decoration: underline; }
-
 .cart-nav {
   background: var(--black);
   color: var(--yellow);
   padding: 10px 14px;
-  white-space: nowrap;
 }
 .cart-count {
   background: var(--yellow);
@@ -207,15 +205,12 @@ nav a:hover { text-decoration: underline; }
   color: var(--yellow);
 }
 
-/* سلة المشتريات */
+/* Cart */
 .cart-section {
   background: #f7f7f7;
   padding: 55px 7%;
 }
-.cart-section h2 {
-  font-size: 30px;
-  margin-top: 0;
-}
+.cart-section h2 { font-size: 30px; }
 .cart-item {
   background: white;
   border: 1px solid #ddd;
@@ -227,12 +222,9 @@ nav a:hover { text-decoration: underline; }
   gap: 15px;
   flex-wrap: wrap;
 }
-.cart-item h3 {
-  margin: 0 0 7px;
-  font-size: 17px;
-}
+.cart-item h3 { margin: 0 0 7px; }
 .cart-item p {
-  margin: 0;
+  margin: 5px 0;
   color: #666;
   font-size: 14px;
 }
@@ -258,7 +250,16 @@ nav a:hover { text-decoration: underline; }
 .remove-button {
   background: #eee !important;
   color: #b00020;
-  font-size: 14px !important;
+  font-size: 13px !important;
+  width: auto !important;
+  padding: 0 10px;
+}
+.empty-cart {
+  background: white;
+  padding: 25px;
+  text-align: center;
+  color: #777;
+  border: 1px dashed #ccc;
 }
 .cart-summary {
   background: var(--black);
@@ -270,7 +271,6 @@ nav a:hover { text-decoration: underline; }
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  margin: 8px 0;
 }
 .cart-summary .total {
   color: var(--yellow);
@@ -278,7 +278,6 @@ nav a:hover { text-decoration: underline; }
   font-weight: 1000;
   border-top: 1px solid #555;
   padding-top: 15px;
-  margin-top: 15px;
 }
 .checkout-button {
   width: 100%;
@@ -291,13 +290,6 @@ nav a:hover { text-decoration: underline; }
   margin-top: 15px;
 }
 .checkout-button:hover { background: white; }
-.empty-cart {
-  background: white;
-  padding: 25px;
-  text-align: center;
-  color: #777;
-  border: 1px dashed #ccc;
-}
 
 .features {
   background: var(--black);
@@ -337,7 +329,7 @@ footer strong {
   display: inline-block;
 }
 
-/* نافذة الطلب */
+/* Order modal */
 .modal {
   display: none;
   position: fixed;
@@ -420,7 +412,6 @@ footer strong {
   line-height: 1.7;
   margin: 12px 0;
 }
-.result-actions { margin-top: 15px; }
 .result-actions a {
   display: block;
   text-align: center;
@@ -451,7 +442,6 @@ footer strong {
   nav {
     gap: 12px;
     font-size: 13px;
-    flex-wrap: wrap;
     justify-content: center;
   }
   .brand h1 { font-size: 25px; }
@@ -479,7 +469,6 @@ footer strong {
     <h1>CHEMS STORE</h1>
     <span>شمس ستور • اختار منتجك وخلي الباقي علينا</span>
   </div>
-
   <nav>
     <a href="#home">الرئيسية</a>
     <a href="#products">المنتجات</a>
@@ -491,7 +480,6 @@ footer strong {
 </header>
 
 <main>
-
 <section class="hero" id="home">
   <div>
     <span class="eyebrow">WELCOME TO CHEMS STORE</span>
@@ -502,7 +490,6 @@ footer strong {
     </p>
     <a class="hero-button" href="#products">اكتشف المنتجات ←</a>
   </div>
-
   <div class="hero-art">
     <div>
       <strong>CHEMS<br>STORE.</strong>
@@ -519,7 +506,6 @@ footer strong {
   </div>
 
   <div class="products">
-
     <article class="product">
       <div class="product-image">
         <img src="./67098287-29f6-4181-8c3d-e46261d2d004.jpg" alt="حاملة المفاتيح">
@@ -527,9 +513,7 @@ footer strong {
       <div class="product-info">
         <h3>حاملة المفاتيح</h3>
         <div class="price">1500 <small>دج</small></div>
-        <button class="order-button" onclick="addToCart('حاملة المفاتيح',1500)">
-          أضف إلى السلة
-        </button>
+        <button type="button" class="order-button" data-name="حاملة المفاتيح" data-price="1500">أضف إلى السلة</button>
       </div>
     </article>
 
@@ -540,9 +524,7 @@ footer strong {
       <div class="product-info">
         <h3>بورت كلي باللوغو</h3>
         <div class="price">500 <small>دج</small></div>
-        <button class="order-button" onclick="addToCart('بورت كلي باللوغو',500)">
-          أضف إلى السلة
-        </button>
+        <button type="button" class="order-button" data-name="بورت كلي باللوغو" data-price="500">أضف إلى السلة</button>
       </div>
     </article>
 
@@ -553,9 +535,7 @@ footer strong {
       <div class="product-info">
         <h3>بورت كلي عادي</h3>
         <div class="price">500 <small>دج</small></div>
-        <button class="order-button" onclick="addToCart('بورت كلي عادي',500)">
-          أضف إلى السلة
-        </button>
+        <button type="button" class="order-button" data-name="بورت كلي عادي" data-price="500">أضف إلى السلة</button>
       </div>
     </article>
 
@@ -566,34 +546,27 @@ footer strong {
       <div class="product-info">
         <h3>حصالة تحدي 50 مليون</h3>
         <div class="price">2000 <small>دج</small></div>
-        <button class="order-button" onclick="addToCart('حصالة تحدي 50 مليون',2000)">
-          أضف إلى السلة
-        </button>
+        <button type="button" class="order-button" data-name="حصالة تحدي 50 مليون" data-price="2000">أضف إلى السلة</button>
       </div>
     </article>
-
   </div>
 </section>
 
-<!-- سلة المشتريات -->
 <section class="cart-section" id="cart">
   <h2>🛒 سلة المشتريات</h2>
   <p>المنتجات اللي اخترتهم تلقاهم هنا.</p>
-
   <div id="cartItems"></div>
 
   <div class="cart-summary">
     <p>
-      <span>عدد المنتجات:</span>
+      <span>عدد القطع:</span>
       <strong id="totalQuantity">0</strong>
     </p>
-
     <p class="total">
       <span>المبلغ الإجمالي:</span>
       <strong><span id="totalPrice">0</span> دج</strong>
     </p>
-
-    <button class="checkout-button" onclick="startCheckout()">
+    <button type="button" class="checkout-button" id="checkoutButton">
       تأكيد الطلب
     </button>
   </div>
@@ -613,7 +586,6 @@ footer strong {
     <span>تأكيد الطلب عبر Instagram</span>
   </div>
 </section>
-
 </main>
 
 <footer id="contact">
@@ -626,19 +598,15 @@ footer strong {
   </a>
 </footer>
 
-<!-- نافذة معلومات الطلب -->
 <div class="modal" id="orderModal" role="dialog" aria-modal="true">
   <div class="modal-box">
-
-    <button class="close" onclick="closeOrder()" aria-label="إغلاق">&times;</button>
-
+    <button type="button" class="close" id="closeOrder" aria-label="إغلاق">&times;</button>
     <h2>تأكيد الطلب</h2>
     <p>عمّر معلوماتك باش نوجدو طلبك.</p>
 
     <div class="chosen-product" id="chosenProduct"></div>
 
     <form id="orderForm">
-
       <div class="field">
         <label for="firstName">الاسم</label>
         <input id="firstName" type="text" placeholder="أدخل الاسم" required maxlength="40">
@@ -729,22 +697,14 @@ footer strong {
         <input id="address" type="text" placeholder="الحي، الشارع، رقم المنزل..." required maxlength="150">
       </div>
 
-      <button class="submit-button" type="submit">
-        تأكيد وتحضير الطلب
-      </button>
-
+      <button class="submit-button" type="submit">تأكيد وتحضير الطلب</button>
     </form>
 
     <div id="orderResult" hidden>
       <h3>طلبك جاهز! 🎉</h3>
       <p>انسخ الرسالة وبعدها افتح محادثة المتجر وأرسلها.</p>
-
       <textarea id="orderMessage" class="order-message" readonly></textarea>
-
-      <button class="copy-button" type="button" onclick="copyOrderMessage()">
-        نسخ رسالة الطلب
-      </button>
-
+      <button class="copy-button" type="button" id="copyButton">نسخ رسالة الطلب</button>
       <div class="result-actions">
         <a id="instagramOrderLink" class="instagram-action"
            href="https://ig.me/m/chem.sstore"
@@ -757,25 +717,16 @@ footer strong {
     <div class="note">
       بعد فتح إنستغرام، الصق رسالة الطلب في المحادثة واضغط إرسال.
     </div>
-
   </div>
 </div>
 
 <script>
-/* معلومات المتجر */
+"use strict";
+
+const cart = [];
+
 const INSTAGRAM_DM_URL = "https://ig.me/m/chem.sstore";
 const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/chem.sstore/";
-
-/* المنتجات */
-const products = [
-  { name: "حاملة المفاتيح", price: 1500 },
-  { name: "بورت كلي باللوغو", price: 500 },
-  { name: "بورت كلي عادي", price: 500 },
-  { name: "حصالة تحدي 50 مليون", price: 2000 }
-];
-
-/* السلة */
-let cart = [];
 
 const modal = document.getElementById("orderModal");
 
@@ -788,43 +739,53 @@ function getInstagramUrl() {
 }
 
 function updateInstagramLinks() {
-  document.querySelectorAll(".instagram-smart-link").forEach(function(link) {
+  document.querySelectorAll(".instagram-smart-link").forEach(link => {
     link.href = getInstagramUrl();
   });
-
   document.getElementById("instagramOrderLink").href = getInstagramUrl();
 }
 
 updateInstagramLinks();
 
-/* إضافة منتج للسلة */
-function addToCart(name, price) {
-  const existingProduct = cart.find(item => item.name === name);
+/* إضافة المنتجات */
+document.querySelectorAll(".order-button").forEach(button => {
+  button.addEventListener("click", function() {
+    const name = this.dataset.name;
+    const price = Number(this.dataset.price);
 
-  if (existingProduct) {
-    existingProduct.quantity++;
+    if (!name || !Number.isFinite(price) || price <= 0) {
+      alert("كاين خطأ في معلومات المنتج.");
+      return;
+    }
+
+    addToCart(name, price);
+  });
+});
+
+function addToCart(name, price) {
+  const existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.quantity++;
   } else {
     cart.push({
-      name: name,
-      price: price,
+      name,
+      price,
       quantity: 1
     });
   }
 
   renderCart();
-
-  alert("تمت إضافة " + name + " إلى السلة!");
 }
 
-/* حساب عدد القطع */
+/* الحسابات */
 function getTotalQuantity() {
   return cart.reduce((total, item) => total + item.quantity, 0);
 }
 
-/* حساب المبلغ الإجمالي */
 function getCartTotal() {
   return cart.reduce((total, item) => {
-    return total + (item.price * item.quantity);
+    return total + item.price * item.quantity;
   }, 0);
 }
 
@@ -834,58 +795,97 @@ function renderCart() {
 
   document.getElementById("cartCount").textContent = getTotalQuantity();
   document.getElementById("totalQuantity").textContent = getTotalQuantity();
-  document.getElementById("totalPrice").textContent = getCartTotal().toLocaleString("fr-FR");
+  document.getElementById("totalPrice").textContent =
+    getCartTotal().toLocaleString("fr-FR");
 
   if (cart.length === 0) {
-    container.innerHTML = `
-      <div class="empty-cart">
-        السلة فارغة حالياً. اختار المنتجات اللي تعجبك!
-      </div>
-    `;
+    container.innerHTML = '<div class="empty-cart">السلة فارغة حالياً. اختار المنتجات اللي تعجبك!</div>';
     return;
   }
 
-  container.innerHTML = cart.map((item, index) => `
-    <div class="cart-item">
-      <div>
-        <h3>${item.name}</h3>
-        <p>${item.price.toLocaleString("fr-FR")} دج للقطعة</p>
-        <p>المجموع: ${(item.price * item.quantity).toLocaleString("fr-FR")} دج</p>
-      </div>
+  container.innerHTML = "";
 
-      <div class="quantity-controls">
-        <button onclick="changeQuantity(${index}, 1)">+</button>
-        <span>${item.quantity}</span>
-        <button onclick="changeQuantity(${index}, -1)">−</button>
-        <button class="remove-button" onclick="removeFromCart(${index})">حذف</button>
-      </div>
-    </div>
-  `).join("");
+  cart.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    const info = document.createElement("div");
+
+    const name = document.createElement("h3");
+    name.textContent = item.name;
+
+    const price = document.createElement("p");
+    price.textContent = item.price.toLocaleString("fr-FR") + " دج للقطعة";
+
+    const subtotal = document.createElement("p");
+    subtotal.textContent =
+      "المجموع: " + (item.price * item.quantity).toLocaleString("fr-FR") + " دج";
+
+    info.append(name, price, subtotal);
+
+    const controls = document.createElement("div");
+    controls.className = "quantity-controls";
+
+    const plus = document.createElement("button");
+    plus.type = "button";
+    plus.textContent = "+";
+    plus.dataset.action = "increase";
+    plus.dataset.index = index;
+    plus.setAttribute("aria-label", "زيادة الكمية");
+
+    const quantity = document.createElement("span");
+    quantity.textContent = item.quantity;
+
+    const minus = document.createElement("button");
+    minus.type = "button";
+    minus.textContent = "−";
+    minus.dataset.action = "decrease";
+    minus.dataset.index = index;
+    minus.setAttribute("aria-label", "نقصان الكمية");
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.textContent = "حذف";
+    remove.className = "remove-button";
+    remove.dataset.action = "remove";
+    remove.dataset.index = index;
+
+    controls.append(plus, quantity, minus, remove);
+    row.append(info, controls);
+    container.appendChild(row);
+  });
 }
 
-/* زيادة أو نقصان الكمية */
-function changeQuantity(index, amount) {
-  if (!cart[index]) return;
+/* التحكم في الكميات والحذف */
+document.getElementById("cartItems").addEventListener("click", function(event) {
+  const button = event.target.closest("button[data-action]");
+  if (!button) return;
 
-  cart[index].quantity += amount;
+  const index = Number(button.dataset.index);
+  const action = button.dataset.action;
 
-  if (cart[index].quantity <= 0) {
+  if (!Number.isInteger(index) || !cart[index]) return;
+
+  if (action === "increase") {
+    cart[index].quantity++;
+  } else if (action === "decrease") {
+    cart[index].quantity--;
+    if (cart[index].quantity <= 0) cart.splice(index, 1);
+  } else if (action === "remove") {
     cart.splice(index, 1);
   }
 
   renderCart();
-}
+});
 
-/* حذف منتج */
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  renderCart();
-}
+/* فتح نافذة الطلب */
+document.getElementById("checkoutButton").addEventListener("click", function() {
+  startCheckout();
+});
 
-/* فتح نافذة تأكيد الطلب */
 function startCheckout() {
   if (cart.length === 0) {
-    alert("السلة فارغة! أضف منتجاً واحداً على الأقل.");
+    alert("السلة فارغة! أضف منتجاً أولاً.");
     return;
   }
 
@@ -904,10 +904,11 @@ function startCheckout() {
   document.getElementById("orderResult").hidden = true;
 
   modal.classList.add("show");
-  document.getElementById("firstName").focus();
 }
 
 /* إغلاق النافذة */
+document.getElementById("closeOrder").addEventListener("click", closeOrder);
+
 function closeOrder() {
   modal.classList.remove("show");
 }
@@ -926,7 +927,6 @@ document.getElementById("orderForm").addEventListener("submit", function(event) 
 
   if (cart.length === 0) {
     alert("السلة فارغة!");
-    closeOrder();
     return;
   }
 
@@ -944,26 +944,26 @@ document.getElementById("orderForm").addEventListener("submit", function(event) 
 
   const productsMessage = cart.map(item => {
     return `- ${item.name}
-  الكمية: ${item.quantity}
-  سعر القطعة: ${item.price} دج
-  المجموع: ${item.price * item.quantity} دج`;
+الكمية: ${item.quantity}
+سعر القطعة: ${item.price} دج
+المجموع: ${item.price * item.quantity} دج`;
   }).join("\n\n");
 
   const message =
 `السلام عليكم، حاب نأكد طلبي من CHEMS STORE:
 
-🛒 المنتجات:
+المنتجات:
 ${productsMessage}
 
-📦 عدد القطع: ${getTotalQuantity()}
-💰 المبلغ الإجمالي: ${getCartTotal()} دج
+عدد القطع: ${getTotalQuantity()}
+المبلغ الإجمالي: ${getCartTotal()} دج
 
-👤 معلومات الزبون:
+معلومات الزبون:
 الاسم: ${firstName}
 اللقب: ${lastName}
-رقم الهاتف: ${phone}
+الهاتف: ${phone}
 
-📍 معلومات التوصيل:
+معلومات التوصيل:
 الولاية: ${wilaya}
 الدائرة / المقاطعة: ${district}
 العنوان: ${address}
@@ -971,7 +971,6 @@ ${productsMessage}
 شكراً لكم.`;
 
   document.getElementById("orderMessage").value = message;
-
   document.getElementById("orderForm").hidden = true;
   document.getElementById("orderResult").hidden = false;
 
@@ -979,18 +978,18 @@ ${productsMessage}
 });
 
 /* نسخ رسالة الطلب */
+document.getElementById("copyButton").addEventListener("click", copyOrderMessage);
+
 async function copyOrderMessage() {
   const field = document.getElementById("orderMessage");
-  const message = field.value;
 
   try {
     if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(message);
+      await navigator.clipboard.writeText(field.value);
     } else {
       field.focus();
       field.select();
       const copied = document.execCommand("copy");
-
       if (!copied) throw new Error("Copy failed");
     }
 
@@ -998,13 +997,13 @@ async function copyOrderMessage() {
   } catch (error) {
     field.focus();
     field.select();
-    alert("حدد الرسالة وانسخها يدوياً، ثم افتح محادثة إنستغرام.");
+    alert("حدد الرسالة وانسخها يدوياً.");
   }
 }
 
-/* عرض السلة عند فتح الصفحة */
+/* تشغيل السلة */
 renderCart();
-
 </script>
+
 </body>
 </html>

@@ -24,7 +24,7 @@ body {
 a { text-decoration: none; color: inherit; }
 button, input, textarea, select { font: inherit; }
 
-/* شاشة الترحيب الافتتاحية - تختفي تلقائياً بدون نقر */
+/* شاشة الترحيب الاحترافية - تختفي تلقائياً بدون نقر */
 .welcome-splash {
   position: fixed;
   inset: 0;
@@ -36,7 +36,7 @@ button, input, textarea, select { font: inherit; }
   text-align: center;
   padding: 24px;
   pointer-events: none;
-  animation: splashScreenExit 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: splashCurtainOut 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .welcome-splash.is-gone {
   display: none;
@@ -44,10 +44,10 @@ button, input, textarea, select { font: inherit; }
 .splash-card {
   background: var(--black);
   color: var(--yellow);
-  padding: 36px 42px;
+  padding: 38px 44px;
   border: 3px solid var(--black);
   box-shadow: 12px 12px 0 var(--white);
-  animation: splashCardEnter 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: splashCardMotion 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .splash-tag {
   display: inline-block;
@@ -55,7 +55,7 @@ button, input, textarea, select { font: inherit; }
   color: var(--black);
   font-size: 12px;
   font-weight: 900;
-  padding: 5px 10px;
+  padding: 5px 12px;
   margin-bottom: 14px;
 }
 .splash-logo {
@@ -74,32 +74,53 @@ button, input, textarea, select { font: inherit; }
   font-weight: bold;
   margin-top: 12px;
 }
+.splash-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.16);
+  margin-top: 18px;
+  overflow: hidden;
+}
+.splash-bar::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--yellow);
+  transform-origin: right center;
+  animation: splashProgress 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
 
-@keyframes splashCardEnter {
+@keyframes splashProgress {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes splashCardMotion {
   0% {
     opacity: 0;
-    transform: scale(0.9) translateY(16px);
+    transform: translateY(18px) scale(0.94);
   }
-  25% {
+  20% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0) scale(1);
   }
-  70% {
+  72% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0) scale(1);
   }
   100% {
     opacity: 0;
-    transform: scale(0.96) translateY(-24px);
+    transform: translateY(-28px) scale(0.96);
   }
 }
 
-@keyframes splashScreenExit {
+@keyframes splashCurtainOut {
   0% {
     opacity: 1;
     transform: translateY(0);
   }
-  70% {
+  72% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -168,7 +189,7 @@ nav a:hover { text-decoration: underline; }
 
 @keyframes cartBump {
   0% { transform: scale(1); }
-  45% { transform: scale(1.12); }
+  45% { transform: scale(1.14); }
   100% { transform: scale(1); }
 }
 
@@ -625,12 +646,13 @@ footer strong {
 
 <body>
 
-<!-- شاشة الترحيب الافتتاحية -->
+<!-- شاشة الترحيب الاحترافية -->
 <div class="welcome-splash" id="welcomeSplash" aria-hidden="true">
   <div class="splash-card">
-    <span class="splash-tag">أهلاً وسهلاً بكم</span>
+    <span class="splash-tag">CHEMS STORE</span>
     <strong class="splash-logo">CHEMS STORE</strong>
     <span class="splash-subtitle">مرحبا بيكم في شمس ستور ✨</span>
+    <div class="splash-bar"></div>
   </div>
 </div>
 
@@ -682,7 +704,7 @@ footer strong {
     <p>اختار المنتجات اللي حاب تشريها وزيدها للسلة</p>
   </div>
 
-  <div class="products" id="productsGrid">
+  <div class="products">
 
     <article class="product">
       <div class="product-image">
@@ -691,7 +713,7 @@ footer strong {
       <div class="product-info">
         <h3>حاملة المفاتيح</h3>
         <div class="price">1500 <small>دج</small></div>
-        <button type="button" class="order-button" data-name="حاملة المفاتيح" data-price="1500">
+        <button type="button" class="order-button" onclick="addToCart('حاملة المفاتيح', 1500, this)">
           أضف إلى السلة
         </button>
       </div>
@@ -704,7 +726,7 @@ footer strong {
       <div class="product-info">
         <h3>بورت كلي باللوغو</h3>
         <div class="price">500 <small>دج</small></div>
-        <button type="button" class="order-button" data-name="بورت كلي باللوغو" data-price="500">
+        <button type="button" class="order-button" onclick="addToCart('بورت كلي باللوغو', 500, this)">
           أضف إلى السلة
         </button>
       </div>
@@ -717,7 +739,7 @@ footer strong {
       <div class="product-info">
         <h3>بورت كلي عادي</h3>
         <div class="price">500 <small>دج</small></div>
-        <button type="button" class="order-button" data-name="بورت كلي عادي" data-price="500">
+        <button type="button" class="order-button" onclick="addToCart('بورت كلي عادي', 500, this)">
           أضف إلى السلة
         </button>
       </div>
@@ -730,7 +752,7 @@ footer strong {
       <div class="product-info">
         <h3>حصالة تحدي 50 مليون</h3>
         <div class="price">2000 <small>دج</small></div>
-        <button type="button" class="order-button" data-name="حصالة تحدي 50 مليون" data-price="2000">
+        <button type="button" class="order-button" onclick="addToCart('حصالة تحدي 50 مليون', 2000, this)">
           أضف إلى السلة
         </button>
       </div>
@@ -757,7 +779,7 @@ footer strong {
       <strong><span id="totalPrice">0</span> دج</strong>
     </p>
 
-    <button type="button" class="checkout-button" id="checkoutBtn">
+    <button type="button" class="checkout-button" onclick="startCheckout()">
       تأكيد الطلب
     </button>
   </div>
@@ -794,7 +816,7 @@ footer strong {
 <div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
   <div class="modal-box">
 
-    <button type="button" class="close" id="closeModalBtn" aria-label="إغلاق">&times;</button>
+    <button type="button" class="close" onclick="closeOrder()" aria-label="إغلاق">&times;</button>
 
     <h2 id="orderModalTitle">تأكيد الطلب</h2>
     <p>عمّر معلوماتك باش نوجدو طلبك.</p>
@@ -871,4 +893,341 @@ footer strong {
           <option>غرداية</option>
           <option>غليزان</option>
           <option>تيميمون</option>
-          <option>برج باجي مختار
+          <option>برج باجي مختار</option>
+          <option>أولاد جلال</option>
+          <option>بني عباس</option>
+          <option>عين صالح</option>
+          <option>عين قزام</option>
+          <option>تقرت</option>
+          <option>جانت</option>
+          <option>المغير</option>
+          <option>المنيعة</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="district">الدائرة / المقاطعة</label>
+        <input id="district" type="text" placeholder="أدخل اسم الدائرة أو المقاطعة" required maxlength="60">
+      </div>
+
+      <div class="field">
+        <label for="address">العنوان بالتفصيل</label>
+        <input id="address" type="text" placeholder="الحي، الشارع، رقم المنزل..." required maxlength="150">
+      </div>
+
+      <button class="submit-button" type="submit">
+        تأكيد وتحضير الطلب
+      </button>
+
+    </form>
+
+    <div id="orderResult" hidden>
+      <h3>طلبك جاهز! 🎉</h3>
+      <p>انسخ الرسالة وبعدها افتح محادثة المتجر وأرسلها.</p>
+
+      <textarea id="orderMessage" class="order-message" readonly></textarea>
+
+      <button class="copy-button" type="button" onclick="copyOrderMessage()">
+        نسخ رسالة الطلب
+      </button>
+
+      <div class="result-actions">
+        <a id="instagramOrderLink" class="instagram-action"
+           href="https://ig.me/m/chem.sstore"
+           target="_blank" rel="noopener noreferrer">
+          فتح محادثة إنستغرام
+        </a>
+      </div>
+    </div>
+
+    <div class="note">
+      بعد فتح إنستغرام، الصق رسالة الطلب في المحادثة واضغط إرسال.
+    </div>
+
+  </div>
+</div>
+
+<script>
+const INSTAGRAM_DM_URL = "https://ig.me/m/chem.sstore";
+const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/chem.sstore/";
+const STORAGE_KEY = "chems_store_cart_v1";
+
+/* إخفاء شاشة الترحيب تلقائياً بعد انتهاء الأنيميشن */
+(function initWelcomeSplash() {
+  const splashEl = document.getElementById("welcomeSplash");
+  if (!splashEl) return;
+
+  const hideSplash = () => splashEl.classList.add("is-gone");
+  splashEl.addEventListener("animationend", hideSplash, { once: true });
+  setTimeout(hideSplash, 1700);
+})();
+
+/* أنيميشن عند الضغط على أضف إلى السلة */
+function animateAddButton(buttonEl) {
+  if (!buttonEl) return;
+
+  buttonEl.classList.remove("is-adding");
+  void buttonEl.offsetWidth;
+  buttonEl.classList.add("is-adding");
+
+  if (!buttonEl.dataset.originalText) {
+    buttonEl.dataset.originalText = buttonEl.textContent.trim();
+  }
+  buttonEl.textContent = "تمت الإضافة ✓";
+
+  if (buttonEl._resetTimer) {
+    clearTimeout(buttonEl._resetTimer);
+  }
+  buttonEl._resetTimer = setTimeout(() => {
+    buttonEl.classList.remove("is-adding");
+    buttonEl.textContent = buttonEl.dataset.originalText;
+  }, 750);
+
+  const rect = buttonEl.getBoundingClientRect();
+  const badge = document.createElement("span");
+  badge.className = "plus-float";
+  badge.textContent = "+1";
+  badge.style.left = `${rect.left + rect.width / 2}px`;
+  badge.style.top = `${rect.top + rect.height / 2}px`;
+  document.body.appendChild(badge);
+  badge.addEventListener("animationend", () => badge.remove(), { once: true });
+
+  const cartNav = document.getElementById("cartNavLink");
+  if (cartNav) {
+    cartNav.classList.remove("is-bouncing");
+    void cartNav.offsetWidth;
+    cartNav.classList.add("is-bouncing");
+  }
+}
+
+function loadCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCart() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+  } catch {
+    // Ignore storage quota or private mode errors
+  }
+}
+
+let cart = loadCart();
+const modal = document.getElementById("orderModal");
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
+function getInstagramUrl() {
+  return isMobileDevice() ? INSTAGRAM_DM_URL : INSTAGRAM_PROFILE_URL;
+}
+
+function updateInstagramLinks() {
+  const url = getInstagramUrl();
+  document.querySelectorAll(".instagram-smart-link").forEach(function(link) {
+    link.href = url;
+  });
+  document.getElementById("instagramOrderLink").href = url;
+}
+
+updateInstagramLinks();
+
+function addToCart(name, price, buttonEl) {
+  const existingProduct = cart.find(item => item.name === name);
+
+  if (existingProduct) {
+    existingProduct.quantity++;
+  } else {
+    cart.push({ name, price, quantity: 1 });
+  }
+
+  saveCart();
+  renderCart();
+  animateAddButton(buttonEl);
+}
+
+function getTotalQuantity() {
+  return cart.reduce((total, item) => total + item.quantity, 0);
+}
+
+function getCartTotal() {
+  return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
+
+function renderCart() {
+  const container = document.getElementById("cartItems");
+
+  document.getElementById("cartCount").textContent = getTotalQuantity();
+  document.getElementById("totalQuantity").textContent = getTotalQuantity();
+  document.getElementById("totalPrice").textContent = getCartTotal();
+
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div class="empty-cart">
+        السلة فارغة حالياً. اختار المنتجات اللي تعجبك!
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = cart.map((item, index) => `
+    <div class="cart-item">
+      <div>
+        <h3>${item.name}</h3>
+        <p>${item.price} دج للقطعة</p>
+        <p>المجموع: ${item.price * item.quantity} دج</p>
+      </div>
+
+      <div class="quantity-controls">
+        <button type="button" onclick="changeQuantity(${index}, 1)">+</button>
+        <span>${item.quantity}</span>
+        <button type="button" onclick="changeQuantity(${index}, -1)">−</button>
+        <button type="button" class="remove-button" onclick="removeFromCart(${index})">حذف</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function changeQuantity(index, amount) {
+  if (!cart[index]) return;
+
+  cart[index].quantity += amount;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeFromCart(index) {
+  if (!cart[index]) return;
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function startCheckout() {
+  if (cart.length === 0) {
+    alert("السلة فارغة! أضف منتجاً واحداً على الأقل.");
+    return;
+  }
+
+  const summary = cart.map(item =>
+    `${item.name} × ${item.quantity} = ${item.price * item.quantity} دج`
+  ).join("<br>");
+
+  document.getElementById("chosenProduct").innerHTML =
+    "<strong>ملخص مشترياتك:</strong><br>" +
+    summary +
+    "<br><br><strong>عدد القطع: " + getTotalQuantity() +
+    "</strong><br><strong>المبلغ الإجمالي: " +
+    getCartTotal() + " دج</strong>";
+
+  document.getElementById("orderForm").hidden = false;
+  document.getElementById("orderResult").hidden = true;
+
+  modal.classList.add("show");
+  document.getElementById("firstName").focus();
+}
+
+function closeOrder() {
+  modal.classList.remove("show");
+}
+
+modal.addEventListener("click", function(event) {
+  if (event.target === modal) closeOrder();
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape" && modal.classList.contains("show")) closeOrder();
+});
+
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (cart.length === 0) {
+    alert("السلة فارغة!");
+    closeOrder();
+    return;
+  }
+
+  const firstName = document.getElementById("firstName").value.trim();
+  const lastName = document.getElementById("lastName").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const wilaya = document.getElementById("wilaya").value;
+  const district = document.getElementById("district").value.trim();
+  const address = document.getElementById("address").value.trim();
+
+  if (!firstName || !lastName || !phone || !wilaya || !district || !address) {
+    alert("من فضلك عمّر جميع الخانات.");
+    return;
+  }
+
+  const productsMessage = cart.map(item =>
+`- ${item.name}
+  الكمية: ${item.quantity}
+  سعر القطعة: ${item.price} دج
+  المجموع: ${item.price * item.quantity} دج`).join("\n\n");
+
+  const message =
+`السلام عليكم، حاب نأكد طلبي من CHEMS STORE:
+
+🛒 المنتجات:
+${productsMessage}
+
+📦 عدد القطع: ${getTotalQuantity()}
+💰 المبلغ الإجمالي: ${getCartTotal()} دج
+
+👤 معلومات الزبون:
+الاسم: ${firstName}
+اللقب: ${lastName}
+رقم الهاتف: ${phone}
+
+📍 معلومات التوصيل:
+الولاية: ${wilaya}
+الدائرة / المقاطعة: ${district}
+العنوان: ${address}
+
+شكراً لكم.`;
+
+  document.getElementById("orderMessage").value = message;
+  document.getElementById("orderForm").hidden = true;
+  document.getElementById("orderResult").hidden = false;
+
+  updateInstagramLinks();
+});
+
+async function copyOrderMessage() {
+  const field = document.getElementById("orderMessage");
+  const message = field.value;
+
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(message);
+    } else {
+      field.focus();
+      field.select();
+      const copied = document.execCommand("copy");
+      if (!copied) throw new Error("Copy failed");
+    }
+
+    alert("تم نسخ رسالة الطلب! افتح إنستغرام والصقها في المحادثة.");
+  } catch {
+    field.focus();
+    field.select();
+    alert("حدد الرسالة وانسخها يدوياً، ثم افتح محادثة إنستغرام.");
+  }
+}
+
+renderCart();
+</script>
+</body>
+</html>
